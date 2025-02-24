@@ -9,5 +9,8 @@ package login;
  * @author hilmy
  */
 public class logis {
+    public static void main(String[] args) {
+        System.out.println("shfsj");
+    }
     
 }
