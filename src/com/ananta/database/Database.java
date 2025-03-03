@@ -13,24 +13,24 @@ public class Database {
 
     // Method untuk mendapatkan koneksi ke database
     public static Connection getConnection() {
-        Connection connection = null;
+        Connection Koneksi = null;
         try {
             // Mendapatkan koneksi ke database
-            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            Koneksi = DriverManager.getConnection(URL, USER, PASSWORD);
             System.out.println("Koneksi ke database berhasil!");
         } catch (SQLException e) {
             // Menangani jika koneksi gagal
             System.out.println("Koneksi ke database gagal!");
             e.printStackTrace();
         }
-        return connection; // Mengembalikan koneksi atau null jika gagal
+        return Koneksi; // Mengembalikan koneksi atau null jika gagal
     }
 
     // Opsional: Method untuk menutup koneksi
-    public static void closeConnection(Connection connection) {
-        if (connection != null) {
+    public static void closeConnection(Connection Koneksi) {
+        if (Koneksi != null) {
             try {
-                connection.close();
+                Koneksi.close();
                 System.out.println("Koneksi database ditutup.");
             } catch (SQLException e) {
                 System.out.println("Gagal menutup koneksi database.");
