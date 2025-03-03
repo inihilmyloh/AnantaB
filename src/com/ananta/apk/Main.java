@@ -4,6 +4,13 @@
  */
 package com.ananta.apk;
 
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author HP
@@ -15,6 +22,9 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        execute();
     }
 
     /**
@@ -29,7 +39,16 @@ public class Main extends javax.swing.JFrame {
         Sidebar = new com.ananta.shapecustom.shapecustom();
         Logo_Ananta = new com.ananta.shapecustom.shapecustom();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Panel_Menu = new com.ananta.shapecustom.shapecustom();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         Panel_Navigasi = new javax.swing.JPanel();
+        Logo_Admin = new javax.swing.JLabel();
+        Label_Admin = new javax.swing.JLabel();
+        Panel_Logout = new com.ananta.shapecustom.shapecustom();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(212, 212, 212));
@@ -59,17 +78,54 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setBorder(null);
+
+        Panel_Menu.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_Menu.setRoundBottomRight(80);
+        Panel_Menu.setLayout(new javax.swing.BoxLayout(Panel_Menu, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPane2.setViewportView(Panel_Menu);
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel3.setFont(new java.awt.Font("Book Antiqua", 1, 25)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("MAIN MENU");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout SidebarLayout = new javax.swing.GroupLayout(Sidebar);
         Sidebar.setLayout(SidebarLayout);
         SidebarLayout.setHorizontalGroup(
             SidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Logo_Ananta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         SidebarLayout.setVerticalGroup(
             SidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SidebarLayout.createSequentialGroup()
                 .addComponent(Logo_Ananta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 945, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE))
         );
 
         getContentPane().add(Sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 1080));
@@ -77,21 +133,114 @@ public class Main extends javax.swing.JFrame {
         Panel_Navigasi.setBackground(new java.awt.Color(0, 119, 32));
         Panel_Navigasi.setPreferredSize(new java.awt.Dimension(100, 135));
 
+        Logo_Admin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Logo_Admin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ananta/ui/ux/icon_admin45.png"))); // NOI18N
+
+        Label_Admin.setBackground(new java.awt.Color(255, 255, 255));
+        Label_Admin.setFont(new java.awt.Font("Book Antiqua", 1, 20)); // NOI18N
+        Label_Admin.setForeground(new java.awt.Color(255, 255, 255));
+        Label_Admin.setText("Admin");
+
+        Panel_Logout.setBackground(new java.awt.Color(251, 0, 0));
+        Panel_Logout.setRoundBottomLeft(40);
+        Panel_Logout.setRoundBottomRight(40);
+        Panel_Logout.setRoundTopLeft(40);
+        Panel_Logout.setRoundTopRight(40);
+
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 1, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Log Out");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
+            }
+        });
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ananta/ui/ux/icon_logout.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel5MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Panel_LogoutLayout = new javax.swing.GroupLayout(Panel_Logout);
+        Panel_Logout.setLayout(Panel_LogoutLayout);
+        Panel_LogoutLayout.setHorizontalGroup(
+            Panel_LogoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_LogoutLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(43, 43, 43))
+        );
+        Panel_LogoutLayout.setVerticalGroup(
+            Panel_LogoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_LogoutLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout Panel_NavigasiLayout = new javax.swing.GroupLayout(Panel_Navigasi);
         Panel_Navigasi.setLayout(Panel_NavigasiLayout);
         Panel_NavigasiLayout.setHorizontalGroup(
             Panel_NavigasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1920, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_NavigasiLayout.createSequentialGroup()
+                .addContainerGap(1724, Short.MAX_VALUE)
+                .addGroup(Panel_NavigasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Panel_Logout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Panel_NavigasiLayout.createSequentialGroup()
+                        .addComponent(Logo_Admin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Label_Admin, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(46, 46, 46))
         );
         Panel_NavigasiLayout.setVerticalGroup(
             Panel_NavigasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 135, Short.MAX_VALUE)
+            .addGroup(Panel_NavigasiLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(Panel_NavigasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Label_Admin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Logo_Admin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Panel_Logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         getContentPane().add(Panel_Navigasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, -1));
 
-        pack();
+        setSize(new java.awt.Dimension(1936, 1088));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        // TODO add your handling code here:
+        Panel_Logout.setBackground(new Color (202, 0, 0));
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        // TODO add your handling code here:
+        Panel_Logout.setBackground(new Color (251, 0, 0));
+    }//GEN-LAST:event_jLabel2MouseExited
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+        // TODO add your handling code here:
+        Panel_Logout.setBackground(new Color (202, 0 , 0));
+    }//GEN-LAST:event_jLabel5MouseEntered
+
+    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
+        // TODO add your handling code here:
+        Panel_Logout.setBackground(new Color (251, 0, 0));
+    }//GEN-LAST:event_jLabel5MouseExited
 
     /**
      * @param args the command line arguments
@@ -130,9 +279,60 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Label_Admin;
+    private javax.swing.JLabel Logo_Admin;
     private com.ananta.shapecustom.shapecustom Logo_Ananta;
+    private com.ananta.shapecustom.shapecustom Panel_Logout;
+    private com.ananta.shapecustom.shapecustom Panel_Menu;
     private javax.swing.JPanel Panel_Navigasi;
     private com.ananta.shapecustom.shapecustom Sidebar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+
+    private void execute() {
+        ImageIcon iconDashboard = new ImageIcon("src/com/ananta/ui/ux/icon_dashboard.png");
+        ImageIcon iconKelola    = new ImageIcon("src/com/ananta/ui/ux/icon_kelola.png");
+        ImageIcon iconKaryawan  = new ImageIcon("src/com/ananta/ui/ux/icon_karyawan.png");
+        ImageIcon iconPricelist = new ImageIcon("src/com/ananta/ui/ux/icon_pricelist.png");
+        ImageIcon iconAktivitas = new ImageIcon("src/com/ananta/ui/ux/icon_aktivitas.png");
+        ImageIcon iconTransaksi = new ImageIcon("src/com/ananta/ui/ux/icon_transaksi.png");
+        ImageIcon iconPengeluaran = new ImageIcon("src/com/ananta/ui/ux/icon_pengeluaran.png");
+        ImageIcon iconLaporan = new ImageIcon("src/com/ananta/ui/ux/icon_laporan.png");
+        ImageIcon iconHarian = new ImageIcon("src/com/ananta/ui/ux/icon_harian.png");
+        ImageIcon iconMingguan = new ImageIcon("src/com/ananta/ui/ux/icon_mingguan.png");
+        ImageIcon iconBulanan = new ImageIcon("src/com/ananta/ui/ux/icon_bulanan.png");
+
+        MenuItem subkelola1 = new MenuItem(null, true, iconKaryawan, "Karyawan", null);
+        MenuItem subkelola2 = new MenuItem(null, true, iconPricelist, "Price List", null);
+
+        MenuItem subaktivitas1 = new MenuItem(null, true, iconTransaksi, "Transaksi", null);
+        MenuItem subaktivitas2 = new MenuItem(null, true, iconPengeluaran, "Pengeluaran", null);
+
+        MenuItem sublaporan1 = new MenuItem(null, true, iconHarian, "Harian", null);
+        MenuItem sublaporan2 = new MenuItem(null, true, iconMingguan, "Mingguan", null);
+        MenuItem sublaporan3 = new MenuItem(null, true, iconBulanan, "Bulanan", null);
+
+        MenuItem menudashboard = new MenuItem(iconDashboard, false, null, "Dashboard", null);
+        MenuItem menukelola    = new MenuItem(iconKelola, false, null, "Kelola", null, subkelola1, subkelola2);
+        MenuItem menuaktivitas = new MenuItem(iconAktivitas, false, null, "Aktivitas", null, subaktivitas1, subaktivitas2);
+        MenuItem menulaporan   = new MenuItem(iconLaporan, false, null, "Laporan", null, sublaporan1, sublaporan2, sublaporan3);
+
+        addMenu(menudashboard, menukelola, menuaktivitas, menulaporan);
+    }
+
+    private void addMenu(MenuItem... menu) {
+        for (int i = 0; i < menu.length; i++) {
+            Panel_Menu.add(menu[i]);
+            ArrayList<MenuItem> subMenu = menu[i].getSubMenu();
+            for (MenuItem m : subMenu) {
+                addMenu(m);
+            }
+        }
+        Panel_Menu.revalidate();
+    }
 }
