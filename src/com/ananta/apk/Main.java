@@ -5,6 +5,7 @@
 package com.ananta.apk;
 
 import java.awt.Color;
+import java.awt.GridBagConstraints;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -22,8 +23,9 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
+       
         execute();
     }
 
@@ -49,9 +51,10 @@ public class Main extends javax.swing.JFrame {
         Panel_Logout = new com.ananta.shapecustom.shapecustom();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(212, 212, 212));
+        setBackground(new java.awt.Color(153, 153, 153));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Sidebar.setBackground(new java.awt.Color(255, 255, 255));
@@ -190,12 +193,18 @@ public class Main extends javax.swing.JFrame {
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jLabel4.setFont(new java.awt.Font("Bookman Old Style", 1, 50)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Navigasi");
+
         javax.swing.GroupLayout Panel_NavigasiLayout = new javax.swing.GroupLayout(Panel_Navigasi);
         Panel_Navigasi.setLayout(Panel_NavigasiLayout);
         Panel_NavigasiLayout.setHorizontalGroup(
             Panel_NavigasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_NavigasiLayout.createSequentialGroup()
-                .addContainerGap(1724, Short.MAX_VALUE)
+                .addGap(331, 331, 331)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 985, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 384, Short.MAX_VALUE)
                 .addGroup(Panel_NavigasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Panel_Logout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Panel_NavigasiLayout.createSequentialGroup()
@@ -214,6 +223,10 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Panel_Logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(Panel_NavigasiLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getContentPane().add(Panel_Navigasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, -1));
@@ -289,23 +302,25 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
     private void execute() {
-        ImageIcon iconDashboard = new ImageIcon("src/com/ananta/ui/ux/icon_dashboard.png");
-        ImageIcon iconKelola    = new ImageIcon("src/com/ananta/ui/ux/icon_kelola.png");
-        ImageIcon iconKaryawan  = new ImageIcon("src/com/ananta/ui/ux/icon_karyawan.png");
-        ImageIcon iconPricelist = new ImageIcon("src/com/ananta/ui/ux/icon_pricelist.png");
-        ImageIcon iconAktivitas = new ImageIcon("src/com/ananta/ui/ux/icon_aktivitas.png");
-        ImageIcon iconTransaksi = new ImageIcon("src/com/ananta/ui/ux/icon_transaksi.png");
+        ImageIcon iconDashboard   = new ImageIcon("src/com/ananta/ui/ux/icon_dashboard.png");
+        ImageIcon iconKelola      = new ImageIcon("src/com/ananta/ui/ux/icon_kelola.png");
+        ImageIcon iconKaryawan    = new ImageIcon("src/com/ananta/ui/ux/icon_karyawan.png");
+        ImageIcon iconPricelist   = new ImageIcon("src/com/ananta/ui/ux/icon_pricelist.png");
+        ImageIcon iconAktivitas   = new ImageIcon("src/com/ananta/ui/ux/icon_aktivitas.png");
+        ImageIcon iconTransaksi   = new ImageIcon("src/com/ananta/ui/ux/icon_transaksi.png");
         ImageIcon iconPengeluaran = new ImageIcon("src/com/ananta/ui/ux/icon_pengeluaran.png");
-        ImageIcon iconLaporan = new ImageIcon("src/com/ananta/ui/ux/icon_laporan.png");
-        ImageIcon iconHarian = new ImageIcon("src/com/ananta/ui/ux/icon_harian.png");
-        ImageIcon iconMingguan = new ImageIcon("src/com/ananta/ui/ux/icon_mingguan.png");
-        ImageIcon iconBulanan = new ImageIcon("src/com/ananta/ui/ux/icon_bulanan.png");
+        ImageIcon iconLaporan     = new ImageIcon("src/com/ananta/ui/ux/icon_laporan.png");
+        ImageIcon iconHarian      = new ImageIcon("src/com/ananta/ui/ux/icon_harian.png");
+        ImageIcon iconMingguan    = new ImageIcon("src/com/ananta/ui/ux/icon_mingguan.png");
+        ImageIcon iconBulanan     = new ImageIcon("src/com/ananta/ui/ux/icon_bulanan.png");
+        ImageIcon iconLogout      = new ImageIcon("src/com/ananta/ui/ux/icon_logout.png");
 
         MenuItem subkelola1 = new MenuItem(null, true, iconKaryawan, "Karyawan", null);
         MenuItem subkelola2 = new MenuItem(null, true, iconPricelist, "Price List", null);
@@ -323,6 +338,7 @@ public class Main extends javax.swing.JFrame {
         MenuItem menulaporan   = new MenuItem(iconLaporan, false, null, "Laporan", null, sublaporan1, sublaporan2, sublaporan3);
 
         addMenu(menudashboard, menukelola, menuaktivitas, menulaporan);
+        
     }
 
     private void addMenu(MenuItem... menu) {
