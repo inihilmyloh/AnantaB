@@ -55,26 +55,24 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="kuning_card_RK1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="723" max="-2" attributes="0"/>
-                          <Component id="shapecustom2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="pn_PilihHari" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="kuning_card_RK" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="hijau_card_RK" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="81" pref="81" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="hijau_card_RO" max="32767" attributes="0"/>
-                                  <Component id="kuning_card_RO" max="32767" attributes="0"/>
-                              </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="kuning_card_RK" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="hijau_card_RK" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                          <EmptySpace min="81" pref="81" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="hijau_card_RO" max="32767" attributes="0"/>
+                              <Component id="kuning_card_RO" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
+                      <Component id="tbl_RiwayatTransaksi" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="100" max="32767" attributes="0"/>
               </Group>
@@ -89,16 +87,16 @@
                       <Component id="kuning_card_RK" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="hijau_card_RO" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="hijau_card_RK" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="hijau_card_RK" min="-2" max="-2" attributes="0"/>
+                      <Component id="hijau_card_RO" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="kuning_card_RK1" min="-2" max="-2" attributes="0"/>
-                      <Component id="shapecustom2" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="kuning_card_RK1" max="32767" attributes="0"/>
+                      <Component id="pn_PilihHari" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="400" max="-2" attributes="0"/>
+                  <Component id="tbl_RiwayatTransaksi" min="-2" pref="400" max="-2" attributes="0"/>
                   <EmptySpace pref="50" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -160,7 +158,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="labelLabaBersih" max="32767" attributes="0"/>
+                          <Component id="labelLaba" max="32767" attributes="0"/>
                           <Component id="labelPengeluaran" alignment="0" pref="177" max="32767" attributes="0"/>
                           <Component id="labelPemasukan" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -172,9 +170,9 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lb_ttl_Pemasukan" min="-2" pref="177" max="-2" attributes="0"/>
-                          <Component id="lb_ttl_Pengeluaran" min="-2" pref="177" max="-2" attributes="0"/>
-                          <Component id="lb_ttl_Laba" min="-2" pref="177" max="-2" attributes="0"/>
+                          <Component id="PemasukanDlmAngka" min="-2" pref="177" max="-2" attributes="0"/>
+                          <Component id="PengeluaranDlmAngka" min="-2" pref="177" max="-2" attributes="0"/>
+                          <Component id="LabaDlmAngka" min="-2" pref="177" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="69" max="32767" attributes="0"/>
                   </Group>
@@ -187,19 +185,19 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lb_rp_pemasukan" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="labelPemasukan" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb_ttl_Pemasukan" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="PemasukanDlmAngka" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="labelPengeluaran" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lb_rp_pengeluaran" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb_ttl_Pengeluaran" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="PengeluaranDlmAngka" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="labelLabaBersih" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelLaba" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lb_rp_laba" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb_ttl_Laba" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabaDlmAngka" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="43" max="32767" attributes="0"/>
                   </Group>
@@ -218,7 +216,7 @@
                 <Property name="text" type="java.lang.String" value="Pengeluaran"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="labelLabaBersih">
+            <Component class="javax.swing.JLabel" name="labelLaba">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Bright" size="24" style="1"/>
@@ -273,7 +271,7 @@
                 <Property name="text" type="java.lang.String" value="Pemasukan"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lb_ttl_Pemasukan">
+            <Component class="javax.swing.JLabel" name="PemasukanDlmAngka">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Bright" size="24" style="1"/>
@@ -284,7 +282,7 @@
                 <Property name="text" type="java.lang.String" value="325.000,00"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lb_ttl_Pengeluaran">
+            <Component class="javax.swing.JLabel" name="PengeluaranDlmAngka">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Bright" size="24" style="1"/>
@@ -295,7 +293,7 @@
                 <Property name="text" type="java.lang.String" value="190.000,00"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lb_ttl_Laba">
+            <Component class="javax.swing.JLabel" name="LabaDlmAngka">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Bright" size="24" style="1"/>
@@ -363,64 +361,80 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="labelTerlaris" max="32767" attributes="0"/>
-                          <Component id="labelJmlPelanggan" pref="188" max="32767" attributes="0"/>
-                          <Component id="labelJmlTransaksi" max="32767" attributes="0"/>
+                          <Component id="labelProduk" max="32767" attributes="0"/>
+                          <Component id="labelJasa" max="32767" attributes="0"/>
+                          <Component id="labelTransaksi" max="32767" attributes="0"/>
+                          <Component id="labelTerlaris" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="titikdua" alignment="0" max="32767" attributes="0"/>
                                   <Component id="titikddua" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="titikdddua1" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="JmlTransaksiDlmAngka" max="32767" attributes="0"/>
-                                  <Component id="JmlPelangganDlmAngka" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtTerlaris" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="numTerlaris" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="TransaksiDlmAngka" min="-2" pref="165" max="-2" attributes="0"/>
+                                          <Component id="JasaDlmAngka" min="-2" pref="165" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="titikdddua" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtTerlaris" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="numTerlaris" min="-2" max="-2" attributes="0"/>
+                              <Component id="ProdukDlmAngka" min="-2" pref="165" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="46" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="labelJmlTransaksi" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="titikddua" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="JmlTransaksiDlmAngka" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TransaksiDlmAngka" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelTransaksi" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="labelJmlPelanggan" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="titikdua" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="JmlPelangganDlmAngka" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JasaDlmAngka" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelJasa" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="labelTerlaris" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="titikdddua" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="numTerlaris" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtTerlaris" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelProduk" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ProdukDlmAngka" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="43" max="32767" attributes="0"/>
+                      <EmptySpace pref="11" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="titikdddua1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelTerlaris" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTerlaris" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="numTerlaris" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="labelJmlTransaksi">
+            <Component class="javax.swing.JLabel" name="labelProduk">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Bright" size="24" style="1"/>
@@ -428,18 +442,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Jml. Transaksi"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="labelJmlPelanggan">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Lucida Bright" size="24" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Jml. Jasa Laku"/>
+                <Property name="text" type="java.lang.String" value="Produk Terjual"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="labelTerlaris">
@@ -450,7 +453,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Jasa Terlaris"/>
+                <Property name="text" type="java.lang.String" value="Jasa/Produk Terlaris"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="titikddua">
@@ -508,7 +511,7 @@
                 <Property name="text" type="java.lang.String" value="Hair Cut"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="JmlPelangganDlmAngka">
+            <Component class="javax.swing.JLabel" name="JasaDlmAngka">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Bright" size="24" style="1"/>
@@ -519,7 +522,7 @@
                 <Property name="text" type="java.lang.String" value="20"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="JmlTransaksiDlmAngka">
+            <Component class="javax.swing.JLabel" name="ProdukDlmAngka">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Bright" size="24" style="1"/>
@@ -527,7 +530,51 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="25"/>
+                <Property name="text" type="java.lang.String" value="14"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="labelJasa">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lucida Bright" size="24" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Jasa Dikerjakan"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="titikdddua1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lucida Bright" size="24" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value=":"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="TransaksiDlmAngka">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lucida Bright" size="24" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="20"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="labelTransaksi">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lucida Bright" size="24" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Transaksi Dilakukan"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -574,7 +621,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+        <Container class="javax.swing.JScrollPane" name="tbl_RiwayatTransaksi">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
@@ -628,7 +675,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="com.ananta.shapecustom.shapecustom" name="shapecustom2">
+        <Container class="com.ananta.shapecustom.shapecustom" name="pn_PilihHari">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="a7" red="ef" type="rgb"/>
@@ -643,26 +690,26 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="39" max="32767" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" pref="110" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <Component id="comboBoxHari" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jComboBox1" alignment="1" pref="39" max="32767" attributes="0"/>
+                  <Component id="comboBoxHari" alignment="1" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="comboBoxHari">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="a7" red="ef" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Lucida Bright" size="12" style="1"/>
+                  <Font name="Lucida Bright" size="18" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="8">
@@ -683,7 +730,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboBoxHariActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
