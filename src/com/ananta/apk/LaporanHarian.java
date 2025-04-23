@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 import com.ananta.database.Database;
+import com.ananta.shapecustom.RoundedComboBox;
 /**
  *
  * @author M.Khoiril
@@ -33,33 +34,36 @@ public class LaporanHarian extends javax.swing.JPanel {
         label_RK = new javax.swing.JLabel();
         hijau_card_RK = new com.ananta.shapecustom.shapecustom();
         labelPengeluaran = new javax.swing.JLabel();
-        labelLabaBersih = new javax.swing.JLabel();
+        labelLaba = new javax.swing.JLabel();
         lb_rp_pemasukan = new javax.swing.JLabel();
         lb_rp_pengeluaran = new javax.swing.JLabel();
         lb_rp_laba = new javax.swing.JLabel();
         labelPemasukan = new javax.swing.JLabel();
-        lb_ttl_Pemasukan = new javax.swing.JLabel();
-        lb_ttl_Pengeluaran = new javax.swing.JLabel();
-        lb_ttl_Laba = new javax.swing.JLabel();
+        PemasukanDlmAngka = new javax.swing.JLabel();
+        PengeluaranDlmAngka = new javax.swing.JLabel();
+        LabaDlmAngka = new javax.swing.JLabel();
         kuning_card_RO = new com.ananta.shapecustom.shapecustom();
         label_RO = new javax.swing.JLabel();
         hijau_card_RO = new com.ananta.shapecustom.shapecustom();
-        labelJmlTransaksi = new javax.swing.JLabel();
-        labelJmlPelanggan = new javax.swing.JLabel();
+        labelProduk = new javax.swing.JLabel();
         labelTerlaris = new javax.swing.JLabel();
         titikddua = new javax.swing.JLabel();
         titikdua = new javax.swing.JLabel();
         titikdddua = new javax.swing.JLabel();
         numTerlaris = new javax.swing.JLabel();
         txtTerlaris = new javax.swing.JLabel();
-        JmlPelangganDlmAngka = new javax.swing.JLabel();
-        JmlTransaksiDlmAngka = new javax.swing.JLabel();
+        JasaDlmAngka = new javax.swing.JLabel();
+        ProdukDlmAngka = new javax.swing.JLabel();
+        labelJasa = new javax.swing.JLabel();
+        titikdddua1 = new javax.swing.JLabel();
+        TransaksiDlmAngka = new javax.swing.JLabel();
+        labelTransaksi = new javax.swing.JLabel();
         kuning_card_RK1 = new com.ananta.shapecustom.shapecustom();
         labelRiwayatTransaksi = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        tbl_RiwayatTransaksi = new javax.swing.JScrollPane();
         TabelRiwayatTransaksi = new com.ananta.shapecustom.JTaabel();
-        shapecustom2 = new com.ananta.shapecustom.shapecustom();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        pn_PilihHari = new com.ananta.shapecustom.shapecustom();
+        comboBoxHari = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(153, 153, 153));
 
@@ -101,9 +105,9 @@ public class LaporanHarian extends javax.swing.JPanel {
         labelPengeluaran.setForeground(new java.awt.Color(255, 255, 255));
         labelPengeluaran.setText("Pengeluaran");
 
-        labelLabaBersih.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
-        labelLabaBersih.setForeground(new java.awt.Color(255, 255, 255));
-        labelLabaBersih.setText("Laba");
+        labelLaba.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
+        labelLaba.setForeground(new java.awt.Color(255, 255, 255));
+        labelLaba.setText("Laba");
 
         lb_rp_pemasukan.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
         lb_rp_pemasukan.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,17 +125,17 @@ public class LaporanHarian extends javax.swing.JPanel {
         labelPemasukan.setForeground(new java.awt.Color(255, 255, 255));
         labelPemasukan.setText("Pemasukan");
 
-        lb_ttl_Pemasukan.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
-        lb_ttl_Pemasukan.setForeground(new java.awt.Color(255, 255, 255));
-        lb_ttl_Pemasukan.setText("325.000,00");
+        PemasukanDlmAngka.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
+        PemasukanDlmAngka.setForeground(new java.awt.Color(255, 255, 255));
+        PemasukanDlmAngka.setText("325.000,00");
 
-        lb_ttl_Pengeluaran.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
-        lb_ttl_Pengeluaran.setForeground(new java.awt.Color(255, 255, 255));
-        lb_ttl_Pengeluaran.setText("190.000,00");
+        PengeluaranDlmAngka.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
+        PengeluaranDlmAngka.setForeground(new java.awt.Color(255, 255, 255));
+        PengeluaranDlmAngka.setText("190.000,00");
 
-        lb_ttl_Laba.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
-        lb_ttl_Laba.setForeground(new java.awt.Color(255, 255, 255));
-        lb_ttl_Laba.setText("135.000,00");
+        LabaDlmAngka.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
+        LabaDlmAngka.setForeground(new java.awt.Color(255, 255, 255));
+        LabaDlmAngka.setText("135.000,00");
 
         javax.swing.GroupLayout hijau_card_RKLayout = new javax.swing.GroupLayout(hijau_card_RK);
         hijau_card_RK.setLayout(hijau_card_RKLayout);
@@ -140,7 +144,7 @@ public class LaporanHarian extends javax.swing.JPanel {
             .addGroup(hijau_card_RKLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(hijau_card_RKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelLabaBersih, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelLaba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelPengeluaran, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                     .addComponent(labelPemasukan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
@@ -150,9 +154,9 @@ public class LaporanHarian extends javax.swing.JPanel {
                     .addComponent(lb_rp_laba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(hijau_card_RKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lb_ttl_Pemasukan, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lb_ttl_Pengeluaran, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lb_ttl_Laba, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PemasukanDlmAngka, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PengeluaranDlmAngka, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabaDlmAngka, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         hijau_card_RKLayout.setVerticalGroup(
@@ -162,17 +166,17 @@ public class LaporanHarian extends javax.swing.JPanel {
                 .addGroup(hijau_card_RKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_rp_pemasukan)
                     .addComponent(labelPemasukan)
-                    .addComponent(lb_ttl_Pemasukan))
+                    .addComponent(PemasukanDlmAngka))
                 .addGap(11, 11, 11)
                 .addGroup(hijau_card_RKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelPengeluaran)
                     .addComponent(lb_rp_pengeluaran)
-                    .addComponent(lb_ttl_Pengeluaran))
+                    .addComponent(PengeluaranDlmAngka))
                 .addGap(11, 11, 11)
                 .addGroup(hijau_card_RKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelLabaBersih)
+                    .addComponent(labelLaba)
                     .addComponent(lb_rp_laba)
-                    .addComponent(lb_ttl_Laba))
+                    .addComponent(LabaDlmAngka))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
@@ -204,17 +208,13 @@ public class LaporanHarian extends javax.swing.JPanel {
         hijau_card_RO.setRoundBottomLeft(20);
         hijau_card_RO.setRoundBottomRight(20);
 
-        labelJmlTransaksi.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
-        labelJmlTransaksi.setForeground(new java.awt.Color(255, 255, 255));
-        labelJmlTransaksi.setText("Jml. Transaksi");
-
-        labelJmlPelanggan.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
-        labelJmlPelanggan.setForeground(new java.awt.Color(255, 255, 255));
-        labelJmlPelanggan.setText("Jml. Jasa Laku");
+        labelProduk.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
+        labelProduk.setForeground(new java.awt.Color(255, 255, 255));
+        labelProduk.setText("Produk Terjual");
 
         labelTerlaris.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
         labelTerlaris.setForeground(new java.awt.Color(255, 255, 255));
-        labelTerlaris.setText("Jasa Terlaris");
+        labelTerlaris.setText("Jasa/Produk Terlaris");
 
         titikddua.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
         titikddua.setForeground(new java.awt.Color(255, 255, 255));
@@ -236,13 +236,29 @@ public class LaporanHarian extends javax.swing.JPanel {
         txtTerlaris.setForeground(new java.awt.Color(255, 255, 255));
         txtTerlaris.setText("Hair Cut");
 
-        JmlPelangganDlmAngka.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
-        JmlPelangganDlmAngka.setForeground(new java.awt.Color(255, 255, 255));
-        JmlPelangganDlmAngka.setText("20");
+        JasaDlmAngka.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
+        JasaDlmAngka.setForeground(new java.awt.Color(255, 255, 255));
+        JasaDlmAngka.setText("20");
 
-        JmlTransaksiDlmAngka.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
-        JmlTransaksiDlmAngka.setForeground(new java.awt.Color(255, 255, 255));
-        JmlTransaksiDlmAngka.setText("25");
+        ProdukDlmAngka.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
+        ProdukDlmAngka.setForeground(new java.awt.Color(255, 255, 255));
+        ProdukDlmAngka.setText("14");
+
+        labelJasa.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
+        labelJasa.setForeground(new java.awt.Color(255, 255, 255));
+        labelJasa.setText("Jasa Dikerjakan");
+
+        titikdddua1.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
+        titikdddua1.setForeground(new java.awt.Color(255, 255, 255));
+        titikdddua1.setText(":");
+
+        TransaksiDlmAngka.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
+        TransaksiDlmAngka.setForeground(new java.awt.Color(255, 255, 255));
+        TransaksiDlmAngka.setText("20");
+
+        labelTransaksi.setFont(new java.awt.Font("Lucida Bright", 1, 24)); // NOI18N
+        labelTransaksi.setForeground(new java.awt.Color(255, 255, 255));
+        labelTransaksi.setText("Transaksi Dilakukan");
 
         javax.swing.GroupLayout hijau_card_ROLayout = new javax.swing.GroupLayout(hijau_card_RO);
         hijau_card_RO.setLayout(hijau_card_ROLayout);
@@ -251,47 +267,59 @@ public class LaporanHarian extends javax.swing.JPanel {
             .addGroup(hijau_card_ROLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(hijau_card_ROLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(labelTerlaris, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelJmlPelanggan, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                    .addComponent(labelJmlTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(labelProduk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelJasa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelTerlaris, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
-                .addGroup(hijau_card_ROLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(hijau_card_ROLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(hijau_card_ROLayout.createSequentialGroup()
                         .addGroup(hijau_card_ROLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(titikdua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(titikddua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(titikddua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(titikdddua1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(hijau_card_ROLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JmlTransaksiDlmAngka, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(JmlPelangganDlmAngka, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(hijau_card_ROLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtTerlaris)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(numTerlaris))
+                            .addGroup(hijau_card_ROLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(hijau_card_ROLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TransaksiDlmAngka, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JasaDlmAngka, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(hijau_card_ROLayout.createSequentialGroup()
                         .addComponent(titikdddua)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTerlaris)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numTerlaris)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(ProdukDlmAngka, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         hijau_card_ROLayout.setVerticalGroup(
             hijau_card_ROLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(hijau_card_ROLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(10, 10, 10)
                 .addGroup(hijau_card_ROLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelJmlTransaksi)
                     .addComponent(titikddua)
-                    .addComponent(JmlTransaksiDlmAngka))
+                    .addComponent(TransaksiDlmAngka)
+                    .addComponent(labelTransaksi))
                 .addGap(11, 11, 11)
                 .addGroup(hijau_card_ROLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelJmlPelanggan)
                     .addComponent(titikdua)
-                    .addComponent(JmlPelangganDlmAngka))
+                    .addComponent(JasaDlmAngka)
+                    .addComponent(labelJasa))
                 .addGap(11, 11, 11)
                 .addGroup(hijau_card_ROLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelTerlaris)
                     .addComponent(titikdddua)
-                    .addComponent(numTerlaris)
-                    .addComponent(txtTerlaris))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addComponent(labelProduk)
+                    .addComponent(ProdukDlmAngka))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(hijau_card_ROLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titikdddua1)
+                    .addComponent(labelTerlaris)
+                    .addComponent(txtTerlaris)
+                    .addComponent(numTerlaris))
+                .addGap(17, 17, 17))
         );
 
         kuning_card_RK1.setBackground(new java.awt.Color(239, 167, 0));
@@ -341,40 +369,40 @@ public class LaporanHarian extends javax.swing.JPanel {
                 "No", "Waktu", "Jenis Transaksi", "Nominal", "Keterangan"
             }
         ));
-        jScrollPane2.setViewportView(TabelRiwayatTransaksi);
+        tbl_RiwayatTransaksi.setViewportView(TabelRiwayatTransaksi);
         if (TabelRiwayatTransaksi.getColumnModel().getColumnCount() > 0) {
             TabelRiwayatTransaksi.getColumnModel().getColumn(0).setPreferredWidth(50);
             TabelRiwayatTransaksi.getColumnModel().getColumn(0).setMaxWidth(50);
         }
 
-        shapecustom2.setBackground(new java.awt.Color(239, 167, 0));
-        shapecustom2.setRoundBottomLeft(20);
-        shapecustom2.setRoundBottomRight(20);
-        shapecustom2.setRoundTopLeft(20);
-        shapecustom2.setRoundTopRight(20);
+        pn_PilihHari.setBackground(new java.awt.Color(239, 167, 0));
+        pn_PilihHari.setRoundBottomLeft(20);
+        pn_PilihHari.setRoundBottomRight(20);
+        pn_PilihHari.setRoundTopLeft(20);
+        pn_PilihHari.setRoundTopRight(20);
 
-        jComboBox1.setBackground(new java.awt.Color(239, 167, 0));
-        jComboBox1.setFont(new java.awt.Font("Lucida Bright", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Pilih Hari--", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu", "Minggu" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboBoxHari.setBackground(new java.awt.Color(239, 167, 0));
+        comboBoxHari.setFont(new java.awt.Font("Lucida Bright", 1, 18)); // NOI18N
+        comboBoxHari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Pilih Hari--", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu", "Minggu" }));
+        comboBoxHari.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        comboBoxHari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboBoxHariActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout shapecustom2Layout = new javax.swing.GroupLayout(shapecustom2);
-        shapecustom2.setLayout(shapecustom2Layout);
-        shapecustom2Layout.setHorizontalGroup(
-            shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shapecustom2Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+        javax.swing.GroupLayout pn_PilihHariLayout = new javax.swing.GroupLayout(pn_PilihHari);
+        pn_PilihHari.setLayout(pn_PilihHariLayout);
+        pn_PilihHariLayout.setHorizontalGroup(
+            pn_PilihHariLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_PilihHariLayout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(comboBoxHari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        shapecustom2Layout.setVerticalGroup(
-            shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+        pn_PilihHariLayout.setVerticalGroup(
+            pn_PilihHariLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(comboBoxHari, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         javax.swing.GroupLayout whiteBgLayout = new javax.swing.GroupLayout(whiteBg);
@@ -383,21 +411,20 @@ public class LaporanHarian extends javax.swing.JPanel {
             whiteBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(whiteBgLayout.createSequentialGroup()
                 .addGap(100, 100, 100)
-                .addGroup(whiteBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(whiteBgLayout.createSequentialGroup()
+                .addGroup(whiteBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, whiteBgLayout.createSequentialGroup()
                         .addComponent(kuning_card_RK1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(723, 723, 723)
-                        .addComponent(shapecustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(whiteBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(whiteBgLayout.createSequentialGroup()
-                            .addGroup(whiteBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(kuning_card_RK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(hijau_card_RK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(81, 81, 81)
-                            .addGroup(whiteBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(hijau_card_RO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(kuning_card_RO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(jScrollPane2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pn_PilihHari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, whiteBgLayout.createSequentialGroup()
+                        .addGroup(whiteBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(kuning_card_RK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hijau_card_RK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(81, 81, 81)
+                        .addGroup(whiteBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(hijau_card_RO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(kuning_card_RO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(tbl_RiwayatTransaksi, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         whiteBgLayout.setVerticalGroup(
@@ -408,14 +435,14 @@ public class LaporanHarian extends javax.swing.JPanel {
                     .addComponent(kuning_card_RO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(kuning_card_RK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(whiteBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hijau_card_RO, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hijau_card_RK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(hijau_card_RK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hijau_card_RO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
-                .addGroup(whiteBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(kuning_card_RK1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(shapecustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(whiteBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(kuning_card_RK1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pn_PilihHari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tbl_RiwayatTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
@@ -437,40 +464,43 @@ public class LaporanHarian extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void comboBoxHariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHariActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboBoxHariActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JmlPelangganDlmAngka;
-    private javax.swing.JLabel JmlTransaksiDlmAngka;
+    private javax.swing.JLabel JasaDlmAngka;
+    private javax.swing.JLabel LabaDlmAngka;
+    private javax.swing.JLabel PemasukanDlmAngka;
+    private javax.swing.JLabel PengeluaranDlmAngka;
+    private javax.swing.JLabel ProdukDlmAngka;
     private com.ananta.shapecustom.JTaabel TabelRiwayatTransaksi;
+    private javax.swing.JLabel TransaksiDlmAngka;
+    private javax.swing.JComboBox<String> comboBoxHari;
     private com.ananta.shapecustom.shapecustom hijau_card_RK;
     private com.ananta.shapecustom.shapecustom hijau_card_RO;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JScrollPane jScrollPane2;
     private com.ananta.shapecustom.shapecustom kuning_card_RK;
     private com.ananta.shapecustom.shapecustom kuning_card_RK1;
     private com.ananta.shapecustom.shapecustom kuning_card_RO;
-    private javax.swing.JLabel labelJmlPelanggan;
-    private javax.swing.JLabel labelJmlTransaksi;
-    private javax.swing.JLabel labelLabaBersih;
+    private javax.swing.JLabel labelJasa;
+    private javax.swing.JLabel labelLaba;
     private javax.swing.JLabel labelPemasukan;
     private javax.swing.JLabel labelPengeluaran;
+    private javax.swing.JLabel labelProduk;
     private javax.swing.JLabel labelRiwayatTransaksi;
     private javax.swing.JLabel labelTerlaris;
+    private javax.swing.JLabel labelTransaksi;
     private javax.swing.JLabel label_RK;
     private javax.swing.JLabel label_RO;
     private javax.swing.JLabel lb_rp_laba;
     private javax.swing.JLabel lb_rp_pemasukan;
     private javax.swing.JLabel lb_rp_pengeluaran;
-    private javax.swing.JLabel lb_ttl_Laba;
-    private javax.swing.JLabel lb_ttl_Pemasukan;
-    private javax.swing.JLabel lb_ttl_Pengeluaran;
     private javax.swing.JLabel numTerlaris;
-    private com.ananta.shapecustom.shapecustom shapecustom2;
+    private com.ananta.shapecustom.shapecustom pn_PilihHari;
+    private javax.swing.JScrollPane tbl_RiwayatTransaksi;
     private javax.swing.JLabel titikdddua;
+    private javax.swing.JLabel titikdddua1;
     private javax.swing.JLabel titikddua;
     private javax.swing.JLabel titikdua;
     private javax.swing.JLabel txtTerlaris;
@@ -546,15 +576,15 @@ public class LaporanHarian extends javax.swing.JPanel {
         }
         return totalLaba;
     }
-
+    
     private int jmlTransaksi() {
         int jmlTransaksi = 0;
         try {
             String sql = """
-                         SELECT COUNT(*) AS jumlah_transaksi
-                         FROM transaksi
-                         WHERE DATE(created_at) = CURDATE();
-                         """;
+                        SELECT COUNT(*) AS jumlah_transaksi
+                        FROM transaksi
+                        WHERE DATE(created_at) = CURDATE();
+                        """;
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
 
@@ -567,13 +597,125 @@ public class LaporanHarian extends javax.swing.JPanel {
         }
         return jmlTransaksi;
     }
+
     
+    private int jmlJasaDikerjakan() {
+        int jmlJasa = 0;
+        try {
+            String sql = """
+                        SELECT COUNT(*) AS jumlah_jasa_dikerjakan
+                        FROM transaksi_jasa tj
+                        JOIN transaksi t ON tj.id_transaksi = t.id_transaksi
+                        WHERE DATE(t.created_at) = CURDATE();
+                        """;
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                jmlJasa = rs.getInt("jumlah_jasa_dikerjakan");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jmlJasa;
+    }
     
+    private int jmlProdukTerjual() {
+        int jmlProduk = 0;
+        try {
+            String sql = """
+                         SELECT COUNT(*) AS jumlah_produk
+                         FROM transaksi_barang tb
+                         JOIN transaksi t ON tb.id_transaksi = t.id_transaksi
+                         WHERE DATE(t.created_at) = CURDATE();
+                         """;
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                jmlProduk = rs.getInt("jumlah_produk");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jmlProduk;
+    }
+
+    private void getTerlaris() {
+        String namaTerlaris = "-";
+        int jumlahTerlaris = 0;
+
+        try {
+            String sqlJasa = """
+                             SELECT j.nama_jasa AS nama, COUNT(*) AS jumlah
+                             FROM transaksi_jasa tj
+                             JOIN transaksi t ON tj.id_transaksi = t.id_transaksi
+                             JOIN jasa j ON tj.id_jasa = j.id_jasa
+                             WHERE DATE(t.created_at) = CURDATE()
+                             GROUP BY j.nama_jasa
+                             ORDER BY jumlah DESC
+                             LIMIT 1;
+                             """;
+            
+           PreparedStatement stJasa = conn.prepareStatement(sqlJasa);
+            ResultSet rsJasa = stJasa.executeQuery();
+
+            String namaJasa = null;
+            int jumlahJasa = 0;
+        
+            if (rsJasa.next()) {
+                namaJasa = rsJasa.getString("nama");
+                jumlahJasa = rsJasa.getInt("jumlah");
+            }
+
+            String sqlProduk = """
+                               SELECT b.nama_barang AS nama, COUNT(*) AS jumlah
+                               FROM transaksi_barang tb
+                               JOIN transaksi t ON tb.id_transaksi = t.id_transaksi
+                               JOIN barang b ON tb.id_barang = b.id_barang
+                               WHERE DATE(t.created_at) = CURDATE()
+                               GROUP BY b.nama_barang
+                               ORDER BY jumlah DESC
+                               LIMIT 1;
+                               """;
+
+            PreparedStatement stProduk = conn.prepareStatement(sqlProduk);
+            ResultSet rsProduk = stProduk.executeQuery();
+
+            String namaProduk = null;
+            int jumlahProduk = 0;
+
+            if (rsProduk.next()) {
+                namaProduk = rsProduk.getString("nama");
+                jumlahProduk = rsProduk.getInt("jumlah");
+            }
+
+            if (jumlahJasa >= jumlahProduk) {
+                namaTerlaris = namaJasa != null ? namaJasa : "-";
+                jumlahTerlaris = jumlahJasa;
+            } else {
+                namaTerlaris = namaProduk != null ? namaProduk : "-";
+                jumlahTerlaris = jumlahProduk;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        txtTerlaris.setText(namaTerlaris);
+        numTerlaris.setText("("+jumlahTerlaris + "x)");
+    }
+
     
     private void loadData() {
-        lb_ttl_Pemasukan.setText(String.valueOf(totalPemasukan()));
-        lb_ttl_Pengeluaran.setText(String.valueOf(totalPengeluaran()));
-        lb_ttl_Laba.setText(String.valueOf(totalLaba()));
-        JmlTransaksiDlmAngka.setText(String.valueOf(jmlTransaksi()));
+        PemasukanDlmAngka.setText(String.valueOf(totalPemasukan()));
+        PengeluaranDlmAngka.setText(String.valueOf(totalPengeluaran()));
+        LabaDlmAngka.setText(String.valueOf(totalLaba()));
+        TransaksiDlmAngka.setText(String.valueOf(jmlTransaksi()));
+        JasaDlmAngka.setText(String.valueOf(jmlJasaDikerjakan()));
+        ProdukDlmAngka.setText(String.valueOf(jmlProdukTerjual()));
+        getTerlaris();
     }
 }
