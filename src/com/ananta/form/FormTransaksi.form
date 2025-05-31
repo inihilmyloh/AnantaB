@@ -109,8 +109,6 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                                   <Component id="HapusBT" min="-2" pref="115" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="CetakBT8" min="-2" pref="115" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -161,7 +159,6 @@
                           <Component id="CetakBT" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="EditBT" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="HapusBT" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="CetakBT8" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -269,6 +266,9 @@
                     <Property name="columns" type="int" value="20"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Bookman Old Style" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="1" green="1" red="1" type="rgb"/>
                     </Property>
                     <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
@@ -830,24 +830,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Riwayat Transaksi"/>
           </Properties>
-        </Component>
-        <Component class="com.ananta.shape.CustomButton" name="CetakBT8">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cetak"/>
-            <Property name="defaultColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="b2" red="66" type="rgb"/>
-            </Property>
-            <Property name="hoverColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d2" green="8c" red="46" type="rgb"/>
-            </Property>
-            <Property name="pressedColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d2" green="8c" red="46" type="rgb"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CetakBT8MouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CetakBT8ActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

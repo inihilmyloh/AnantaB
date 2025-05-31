@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StrukTransaksi_subreportJasa" language="groovy" pageWidth="144" pageHeight="802" columnWidth="144" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="6c20d0ab-e489-4f92-a2e9-710d07bd210c">
+	<property name="ireport.zoom" value="6.115909044841463"/>
+	<property name="ireport.x" value="22"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id_transaksi" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT 
+    j.nama_jasa, 
+    tj.harga 
+FROM transaksi_jasa tj
+JOIN jasa j ON j.id_jasa = tj.id_jasa
+WHERE tj.id_transaksi = $P{id_transaksi}]]>
+	</queryString>
+	<field name="nama_jasa" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="harga" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="10" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="50" height="10" uuid="6a6d0a03-a062-4ff9-9446-969b82296e87"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Consolas" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_jasa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="94" y="0" width="50" height="10" uuid="e08fbbf5-32ea-4a4f-a778-301ac841d4cd"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Consolas" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{harga}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

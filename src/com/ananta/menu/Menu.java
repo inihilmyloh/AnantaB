@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.LayoutManager;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -18,39 +19,136 @@ import javax.swing.JScrollPane;
 
 public class Menu extends JPanel{
     
-    private final String menuItemsAdmin[] [] = {
-        {"~MAIN~"},
-        {"Dashboard"}, //0
-        {"~MASTER~"},
-        {"Jasa"}, //1
-        {"Barang"}, //2
-        {"Karyawan"},//3
-        {"~AKTIVITAS~"},
-        {"Transaksi"}, //4
-        {"Pengeluaran"},//5
-        {"Absensi"},//6
-        {"~LAPORAN~"},
-        {"Laporan"}, //7
-        {"~LOG OUT~"}, 
-        {"Keluar"} //8
-    };
+    String[][] menuItems = null;
+    private String role;
+    
+    public void setRole (String role){
+    this.role = role;
+    updateMenuByRole();
+    createMenu();
+    }
+    
+    private void updateMenuByRole(){
+    
+    }
+    
+        private void createMenu() {
 
-    private final String menuItemsKasir[][] = {
+    panelMenu.removeAll();
+
+    // Pilih menu berdasarkan role
+    menuItems = "admin".equalsIgnoreCase(role) ? menuItemsAdmin : menuItemsKasir;
+
+    int index = 0;
+    for (int i = 0; i < menuItems.length; i++) {
+        String menuName = menuItems[i][0];
+
+        if (menuName.startsWith("~") && menuName.endsWith("~")) {
+            panelMenu.add(createTitle(menuName));
+        } else {
+            if (isMenuAllowed(menuName)) {
+                MenuItem menuItem = new MenuItem(this, menuItems[i], index++, events);
+                panelMenu.add(menuItem);
+            }
+        }
+    }
+
+    panelMenu.revalidate();
+    panelMenu.repaint();
+}
+
+    
+    private boolean isMenuAllowed(String menuName) {
+    if ("admin".equalsIgnoreCase(role)) {
+        return true; // admin bisa akses semua
+    }
+
+    List<String> allowedKasir = Arrays.asList(
+        "Dashboard", "Absensi", "Jasa", "Transaksi", "Pengeluaran", "Keluar"
+    );
+
+    return allowedKasir.contains(menuName);
+}
+    
+       private final String menuItem[] [] = {
         {"~MAIN~"},
         {"Dashboard"},
+        {"~MASTER~"},
+        {"Jasa"},
+        {"Barang"},
+        {"Karyawan"},
         {"~AKTIVITAS~"},
         {"Transaksi"},
         {"Pengeluaran"},
         {"Absensi"},
+        {"~LAPORAN~"},
+        {"Laporan"},
         {"~LOG OUT~"},
         {"Keluar"}
-};
+    };
+    
+        private final String[][] menuItemsAdmin = {
+        {"~MAIN~"},
+        {"Dashboard"},
+        {"~MASTER~"},
+        {"Jasa"},
+        {"Barang"},
+        {"Karyawan"},
+        {"~AKTIVITAS~"},
+        {"Transaksi"},
+        {"Pengeluaran"},
+        {"Absensi"},
+        {"~LAPORAN~"},
+        {"Laporan"},
+        {"~LOG OUT~"},
+        {"Keluar"}
+    };
 
-    public boolean isMenuFull () {
-        return menuFull;
+        private final String[][] menuItemsKasir = {
+        {"~MAIN~"},
+        {"Dashboard"},
+        {"~AKTIVITAS~"},
+        {"Absensi"},
+        {"Transaksi"},
+        {"Pengeluaran"},
+        {"~LOG OUT~"},
+        {"Keluar"}
+    };
+    
+      
+      public boolean isMenuFull () {
+      return menuFull;
     }
-
-    public void setMenuFull (boolean menuFull) {
+      
+//    private final String menuItemsAdmin[] [] = {
+//        {"~MAIN~"},
+//        {"Dashboard"}, //0
+//        {"~MASTER~"},
+//        {"Jasa"}, //1
+//        {"Barang"}, //2
+//        {"Karyawan"},//3
+//        {"~AKTIVITAS~"},
+//        {"Transaksi"}, //4
+//        {"Pengeluaran"},//5
+//        {"Absensi"},//6
+//        {"~LAPORAN~"},
+//        {"Laporan"}, //7
+//        {"~LOG OUT~"}, 
+//        {"Keluar"} //8
+//    };
+//
+//    private final String menuItemsKasir[][] = {
+//        {"~MAIN~"},
+//        {"Dashboard"},
+//        {"~AKTIVITAS~"},
+//        {"Transaksi"},
+//        {"Pengeluaran"},
+//        {"Absensi"},
+//        {"~LOG OUT~"},
+//        {"Keluar"}
+//};
+    
+        public void setMenuFull (boolean menuFull) {
         this.menuFull = menuFull;
         if (menuFull) {
             header.setText(headerName);
@@ -67,6 +165,7 @@ public class Menu extends JPanel{
         lightDarkMode.setMenuFull(menuFull);
         //toolBarAccentColor.setMenuFull (menuFull);
     }
+        
 
     private final List<MenuEvent> events = new ArrayList<>();
     private boolean menuFull = true;
@@ -120,18 +219,18 @@ public class Menu extends JPanel{
         add(lightDarkMode);
     }
 
-    private void createMenu() {
-        int index = 0;
-        for (int i = 0; i < menuItemsAdmin.length; i++) {
-            String menuName = menuItemsAdmin [i] [0];
-            if (menuName.startsWith ("~") && menuName.endsWith("~")) {
-                panelMenu.add(createTitle(menuName));
-            } else {
-                MenuItem menuItem = new MenuItem(this, menuItemsAdmin[i], index++, events);
-                panelMenu.add(menuItem);
-            }
-        }
-    }
+//    private void createMenu() {
+//        int index = 0;
+//        for (int i = 0; i < menuItemsAdmin.length; i++) {
+//            String menuName = menuItemsAdmin [i] [0];
+//            if (menuName.startsWith ("~") && menuName.endsWith("~")) {
+//                panelMenu.add(createTitle(menuName));
+//            } else {
+//                MenuItem menuItem = new MenuItem(this, menuItemsAdmin[i], index++, events);
+//                panelMenu.add(menuItem);
+//            }
+//        }
+//    }
 
     private JLabel createTitle(String title) {
         String menuName = title.substring (1, title.length() - 1);
