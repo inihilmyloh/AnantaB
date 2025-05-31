@@ -1,6 +1,8 @@
 package com.ananta.main;
 
 import com.ananta.form.*;
+import com.ananta.main.FormMenuUtama;
+import com.ananta.main.FormMenuUtama.Session;
 import com.ananta.menu.*;
 import com.ananta.menu.MenuAction;
 import com.formdev.flatlaf.FlatClientProperties;
@@ -15,19 +17,22 @@ import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
+
+
 public class Main extends JLayeredPane {
 
-    private Menu menu;
+    public Menu menu;
     private JPanel panelBody;
     private JButton menuButton;
-    
+       
     public Main(){
-    init();
-    
+        init();
+ 
     }
 
     private void init(){
@@ -59,32 +64,117 @@ public class Main extends JLayeredPane {
         menuButton.setIcon(new FlatSVGIcon("com/ananta/icon/" + icon, 0.8f));
     }
     
-    private void initMenuEvent() {
-        menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
-            if(index == 0) {
-                FormMenuUtama.showForm(new FormDashboard());
-            } else if (index == 1) {
-                FormMenuUtama.showForm(new FormJasa());
-            } else if (index == 2) {
-                FormMenuUtama.showForm(new FormBarang());
-            } else if (index == 3) {
-                FormMenuUtama.showForm(new FormKaryawan());
-            }else if (index == 4) {
-                FormMenuUtama.showForm(new FormTransaksi());
-            }else if (index == 5) {
-                FormMenuUtama.showForm(new FormPengeluaran());
-            }else if (index == 6) {
-                FormMenuUtama.showForm(new FormAbsensi());
-            }else if (index == 7) {
-                FormMenuUtama.showForm(new LaporanAlternatif());
+
+private void initMenuEvent() {
+   menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
+        String role = Session.role; // Ambil role dari session
+        System.out.println("Index dipilih: " + index + ", Role: " + role);
+        
+        if ("admin".equalsIgnoreCase(role)) {
+            // Admin boleh akses semua
+            switch (index) {
+                case 0 -> FormMenuUtama.showForm(new FormDashboard());
+                case 1 -> FormMenuUtama.showForm(new FormJasa());
+                case 2 -> FormMenuUtama.showForm(new FormBarang());
+                case 3 -> FormMenuUtama.showForm(new FormKaryawan());
+                case 4 -> FormMenuUtama.showForm(new FormTransaksi());
+                case 5 -> FormMenuUtama.showForm(new FormPengeluaran());
+                case 6 -> FormMenuUtama.showForm(new FormAbsensi());
+                case 7 -> FormMenuUtama.showForm(new LaporanAlternatif());
+                case 8 -> {
+                        int confirm = JOptionPane.showConfirmDialog(
+                        null,
+                        "Apakah Anda yakin ingin keluar?",
+                        "Konfirmasi Keluar",
+                        JOptionPane.YES_NO_OPTION
+                    );
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        Session.username = null;
+                        Session.role = null;
+                        System.exit(0);
+                    } else {
+                        action.cancel();
+                    }
+                    break;
+                }
+                default -> action.cancel();
             }
-            else if (index == 8){
-                FormMenuUtama.logout();
-            }else{
-                action.cancel();
+            
+            
+            
+        } else if ("kasir".equalsIgnoreCase(role)) {
+            // Kasir hanya boleh akses dashboard, absensi, jasa, transaksi, pengeluaran, dan logout
+            switch (index) {
+                case 0 -> FormMenuUtama.showForm(new FormDashboard());
+                case 1 -> FormMenuUtama.showForm(new FormAbsensi());
+                case 2 -> FormMenuUtama.showForm(new FormTransaksi());
+                case 3 -> FormMenuUtama.showForm(new FormPengeluaran());
+                case 4 -> {
+                        int confirm = JOptionPane.showConfirmDialog(
+                        null,
+                        "Apakah Anda yakin ingin keluar?",
+                        "Konfirmasi Keluar",
+                        JOptionPane.YES_NO_OPTION
+                    );
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        Session.username = null;
+                        Session.role = null;
+                        System.exit(0);
+                    } else {
+                        action.cancel();
+                    }
+                    break;
+                }
+                default -> {
+                    action.cancel();
+                    showAksesDitolak();
+                }
             }
-        });
+
+        } else {
+            // Role tidak dikenali
+            action.cancel();
+            showAksesDitolak();
+        }
+    });
+
+
+
+    
+//    private void initMenuEvent() {
+//        menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
+//            if(index == 0) {
+//                FormMenuUtama.showForm(new FormDashboard());
+//            } else if (index == 1) {
+//                FormMenuUtama.showForm(new FormKaryawan());
+//            } else if (index == 2) {
+//                FormMenuUtama.showForm(new FormPricelist());
+//            } else if (index == 3) {
+//                FormMenuUtama.showForm(new FormTransaksi());
+//            } else if (index == 4) {
+//                FormMenuUtama.showForm(new FormPengeluaran());
+//            }else if (index == 5) {
+//                FormMenuUtama.showForm(new LaporanHarian());
+//            }else if (index == 6) {
+//                FormMenuUtama.showForm(new LaporanMingguan());
+//            }else if (index == 7) {
+//                FormMenuUtama.showForm(new LaporanAlternatif());
+//            }//else if (index == 8) {
+//               // FormMenuUtama.showForm(new LaporanAlternatif());
+//            //}
+//            else if (index == 8){
+//                FormMenuUtama.logout();
+//            }else{
+//                action.cancel();
+//            }
+//        });
     }
+    private void showAksesDitolak() {
+    JOptionPane.showMessageDialog(this, "Akses ditolak. Anda tidak memiliki izin untuk membuka fitur ini.", 
+                                  "Akses Ditolak", JOptionPane.WARNING_MESSAGE);
+}
+
+    
     
     private void setMenuFull(boolean full){
         String icon;

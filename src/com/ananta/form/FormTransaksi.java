@@ -23,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
 import java.util.HashMap;
+import net.sf.jasperreports.engine.util.JRLoader;
 
 public class FormTransaksi extends javax.swing.JPanel {
 
@@ -120,14 +121,6 @@ public class FormTransaksi extends javax.swing.JPanel {
                     KembaliText.setText("Rp0");
                 }
             }
-        });
-        CetakBT.addActionListener(e -> {
-            int selectedRow = RiwayatTB.getSelectedRow();
-            if (selectedRow == -1) {
-                JOptionPane.showMessageDialog(null, "Pilih salah satu transaksi yang akan dicetak.");
-                return;
-            }
-            cetakStruk(RiwayatTB, selectedRow);
         });
         EditBT.addActionListener(e -> editTransaksi());
         PaymentCB.addActionListener(new ActionListener() {
@@ -312,7 +305,28 @@ public class FormTransaksi extends javax.swing.JPanel {
         return " ".repeat(padding) + text;
     }
 
-    public void cetakStruk(JTable table, int rowIndex) {
+    private void cetakStruk(int idTransaksi) {
+        try {
+            // Path file jasper
+            String path = "src/com/ananta/struk/StrukTransaksi.jasper";
+            Connection conn = Database.getConnection();
+
+            // Parameter
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("id_transaksi", idTransaksi);
+
+            // Load dan cetak laporan
+            JasperPrint print = JasperFillManager.fillReport(path, parameters, conn);
+            JasperViewer viewer = new JasperViewer(print, false);
+            viewer.setVisible(true);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Gagal mencetak laporan: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void cetakStruk2(JTable table, int rowIndex) {
         try {
             String printerName = "Thermal Printer Generic";
 
@@ -758,12 +772,15 @@ public class FormTransaksi extends javax.swing.JPanel {
             return;
         }
 
+        // Ambil harga dan jumlah stok dari tabel barang
         String sqlGetHargaJumlah = "SELECT harga, jumlah FROM barang WHERE id_barang = ?";
         PreparedStatement pstGetHargaJumlah = conn.prepareStatement(sqlGetHargaJumlah);
 
-        String sqlInsert = "INSERT INTO transaksi_barang (id_transaksi, id_barang, jumlah, harga) VALUES (?, ?, ?, ?)";
+        // Tambahkan kolom subtotal ke query insert
+        String sqlInsert = "INSERT INTO transaksi_barang (id_transaksi, id_barang, jumlah, harga, subtotal) VALUES (?, ?, ?, ?, ?)";
         PreparedStatement pstInsert = conn.prepareStatement(sqlInsert);
 
+        // Untuk mengurangi stok barang
         String sqlUpdateJumlah = "UPDATE barang SET jumlah = jumlah - ? WHERE id_barang = ?";
         PreparedStatement pstUpdateJumlah = conn.prepareStatement(sqlUpdateJumlah);
 
@@ -785,14 +802,18 @@ public class FormTransaksi extends javax.swing.JPanel {
                 throw new SQLException("Stok barang tidak mencukupi untuk ID " + idBarang + ". Tersisa: " + stokTersedia);
             }
 
-            // Simpan transaksi barang
+            // Hitung subtotal
+            BigDecimal subtotal = harga.multiply(new BigDecimal(jumlahDibeli));
+
+            // Simpan transaksi barang dengan subtotal
             pstInsert.setInt(1, idTransaksi);
             pstInsert.setInt(2, idBarang);
             pstInsert.setInt(3, jumlahDibeli);
             pstInsert.setBigDecimal(4, harga);
+            pstInsert.setBigDecimal(5, subtotal);  // ← Tambahan penting
             pstInsert.executeUpdate();
 
-            // Update jumlah (stok)
+            // Update jumlah stok barang
             pstUpdateJumlah.setInt(1, jumlahDibeli);
             pstUpdateJumlah.setInt(2, idBarang);
             pstUpdateJumlah.executeUpdate();
@@ -888,7 +909,6 @@ public class FormTransaksi extends javax.swing.JPanel {
         shapecustom8 = new com.ananta.shape.shapecustom();
         barcodeText = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        CetakBT8 = new com.ananta.shape.CustomButton();
 
         shapecustom2.setBackground(new java.awt.Color(212, 212, 212));
         shapecustom2.setPreferredSize(new java.awt.Dimension(1427, 887));
@@ -918,6 +938,7 @@ public class FormTransaksi extends javax.swing.JPanel {
         DetailTotalText.setBackground(new java.awt.Color(255, 255, 255));
         DetailTotalText.setColumns(20);
         DetailTotalText.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        DetailTotalText.setForeground(new java.awt.Color(1, 1, 1));
         DetailTotalText.setLineWrap(true);
         DetailTotalText.setRows(5);
         DetailTotalText.setWrapStyleWord(true);
@@ -1213,21 +1234,6 @@ public class FormTransaksi extends javax.swing.JPanel {
         jLabel14.setForeground(new java.awt.Color(1, 0, 0));
         jLabel14.setText("Riwayat Transaksi");
 
-        CetakBT8.setText("Cetak");
-        CetakBT8.setDefaultColor(new java.awt.Color(102, 178, 255));
-        CetakBT8.setHoverColor(new java.awt.Color(70, 140, 210));
-        CetakBT8.setPressedColor(new java.awt.Color(70, 140, 210));
-        CetakBT8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CetakBT8MouseClicked(evt);
-            }
-        });
-        CetakBT8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CetakBT8ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout shapecustom2Layout = new javax.swing.GroupLayout(shapecustom2);
         shapecustom2.setLayout(shapecustom2Layout);
         shapecustom2Layout.setHorizontalGroup(
@@ -1284,9 +1290,7 @@ public class FormTransaksi extends javax.swing.JPanel {
                                         .addGap(40, 40, 40)
                                         .addComponent(EditBT, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(44, 44, 44)
-                                .addComponent(HapusBT, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
-                                .addComponent(CetakBT8, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(HapusBT, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(shapecustom5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1561, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1325,8 +1329,7 @@ public class FormTransaksi extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(CetakBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(EditBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(HapusBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(CetakBT8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(HapusBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
@@ -1489,7 +1492,7 @@ public class FormTransaksi extends javax.swing.JPanel {
 
             // Simpan transaksi
             simpanTransaksi();
-            resetFormTransaksi(); 
+            resetFormTransaksi();
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Terjadi kesalahan: " + ex.getMessage());
@@ -1514,8 +1517,13 @@ public class FormTransaksi extends javax.swing.JPanel {
     }//GEN-LAST:event_UndoBTActionPerformed
 
     private void CetakBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CetakBTActionPerformed
-        // TODO add your handling code here:
-
+        int selectedRow = RiwayatTB.getSelectedRow();
+        if (selectedRow != -1) {
+            int idTransaksi = (int) RiwayatTB.getValueAt(selectedRow, 1); // kolom ke-1 adalah id_transaksi
+            cetakStruk(idTransaksi);
+        } else {
+            JOptionPane.showMessageDialog(this, "Silakan pilih baris transaksi yang ingin dicetak.");
+        }
     }//GEN-LAST:event_CetakBTActionPerformed
 
     private void EditBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditBTActionPerformed
@@ -1540,41 +1548,11 @@ public class FormTransaksi extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_HapusBTActionPerformed
 
-    private void CetakBT8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CetakBT8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CetakBT8ActionPerformed
-
-    private void CetakBT8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CetakBT8MouseClicked
-        // TODO add your handling code here:
-         try {
-        // Lokasi file .jasper
-        String path = "src/com/ananta/report/StrukPenjualan.jasper"; // sesuaikan dengan lokasi file Anda
-
-        // Membuat parameter jika diperlukan (bisa kosong jika tidak pakai parameter)
-        HashMap<String, Object> parameter = new HashMap<>();
-        // contoh: parameter.put("id_nota", "NOTA001");
-
-        // Mendapatkan koneksi ke database
-        Connection con = Database.getConnection(); // sesuaikan dengan class koneksi Anda
-
-        // Mengisi laporan
-        JasperPrint print = JasperFillManager.fillReport(path, parameter, con);
-
-        // Menampilkan laporan
-        JasperViewer viewer = new JasperViewer(print, false);
-        viewer.setVisible(true);
-
-    } catch (Exception e) {
-        javax.swing.JOptionPane.showMessageDialog(null, "Gagal mencetak laporan: \n" + e.getMessage());
-    }
-    }//GEN-LAST:event_CetakBT8MouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.ananta.shape.CustomComboBox BarberCB;
     private javax.swing.JTextField BayarText;
     private com.ananta.shape.CustomButton CetakBT;
-    private com.ananta.shape.CustomButton CetakBT8;
     private javax.swing.JTextArea DetailTotalText;
     private com.ananta.shape.CustomButton EditBT;
     private com.ananta.shape.CustomButton HapusBT;
@@ -1607,57 +1585,4 @@ public class FormTransaksi extends javax.swing.JPanel {
     private com.ananta.shape.shapecustom shapecustom6;
     private com.ananta.shape.shapecustom shapecustom8;
     // End of variables declaration//GEN-END:variables
-}
-
-class ButtonRenderer extends JButton implements TableCellRenderer {
-
-    public ButtonRenderer() {
-        setText("Cetak");
-    }
-
-    @Override
-    public Component getTableCellRendererComponent(JTable table, Object value,
-            boolean isSelected, boolean hasFocus, int row, int column) {
-        return this;
-    }
-}
-
-class ButtonEditor extends DefaultCellEditor {
-
-    private JButton button;
-    private boolean clicked;
-    private int row;
-    private JTable table;
-    private FormTransaksi transaksi;
-
-    public ButtonEditor(JCheckBox checkBox, JTable table, FormTransaksi transaksi) {
-        super(checkBox);
-        this.table = table;
-        this.transaksi = transaksi;
-        button = new JButton("Cetak");
-        button.addActionListener(e -> fireEditingStopped());
-    }
-
-    @Override
-    public Component getTableCellEditorComponent(JTable table, Object value,
-            boolean isSelected, int row, int column) {
-        this.row = row;
-        clicked = true;
-        return button;
-    }
-
-    @Override
-    public Object getCellEditorValue() {
-        if (clicked) {
-            transaksi.cetakStruk(table, row);
-        }
-        clicked = false;
-        return "Cetak";
-    }
-
-    @Override
-    public boolean stopCellEditing() {
-        clicked = false;
-        return super.stopCellEditing();
-    }
 }
