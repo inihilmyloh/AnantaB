@@ -14,7 +14,7 @@ public class Database {
     public static Connection getConnection() {
 
         try {
-            String url = "jdbc:mysql://localhost:3306/anantabise";
+            String url = "jdbc:mysql://localhost:3306/anantabarbershop";
             String user = "root";
             String pass = "";
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
