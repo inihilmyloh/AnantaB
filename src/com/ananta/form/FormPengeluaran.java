@@ -1,6 +1,8 @@
 package com.ananta.form;
 
 import com.ananta.database.Database;
+import com.ananta.main.FormMenuUtama;
+import com.ananta.main.FormMenuUtama.Session;
 import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -20,24 +22,24 @@ import java.util.logging.Logger;
  * @author M.Khoiril
  */
 public class FormPengeluaran extends javax.swing.JPanel {
-    
+
     private Connection conn;
     private int idUserTerpilih = -1;
     private String idPengeluaranYangSedangDiedit = null;
     private boolean sedangEditPengeluaran = false;
-    
+
     public FormPengeluaran() {
         initComponents();
 //        setupPanelUtama();
-        setupPanelAwal();   
+        setupPanelAwal();
         conn = Database.getConnection();
         isiNamaKasir();
         setKategoriPengeluaran();
         setupListener();
         loadBarangKeComboBox();
         setupListenerComboBoxBarang();
-        setModelTabelPengeluaran(); 
-        aturLebarKolomPengeluaran(); 
+        setModelTabelPengeluaran();
+        aturLebarKolomPengeluaran();
         getDataPengeluaran((DefaultTableModel) tbl_Daftar_Pengeluaran.getModel());
         setModelTabelDetailRestock();
         getDataDetailRestock((DefaultTableModel) tbl_Daftar_Detail.getModel());
@@ -51,6 +53,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
             aturTampilanDaftarDetail(false);
         });
     }
+    private int idKasir;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1230,10 +1233,12 @@ public class FormPengeluaran extends javax.swing.JPanel {
         String totalText = fieldTotalHarga.getText().replaceAll("[^\\d]", "");
         BigDecimal total = new BigDecimal(totalText.isEmpty() ? "0" : totalText);
         String idPengeluaran = fieldIdPengeluaran.getText().trim();
-        if (!validasiPengeluaran(kategori, total)) return;
+        if (!validasiPengeluaran(kategori, total)) {
+            return;
+        }
         try {
-            if (sedangEditPengeluaran && idPengeluaranYangSedangDiedit != null &&
-                idPengeluaran.equals(idPengeluaranYangSedangDiedit)) {
+            if (sedangEditPengeluaran && idPengeluaranYangSedangDiedit != null
+                    && idPengeluaran.equals(idPengeluaranYangSedangDiedit)) {
                 updatePengeluaran(idPengeluaran, kategori, total);
                 JOptionPane.showMessageDialog(this, "Data pengeluaran berhasil diperbarui.");
             } else {
@@ -1275,7 +1280,9 @@ public class FormPengeluaran extends javax.swing.JPanel {
     }//GEN-LAST:event_fieldBarcodeActionPerformed
 
     private void btn_simpan_FDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpan_FDetailActionPerformed
-        if (!validasiDetailRestock()) return;
+        if (!validasiDetailRestock()) {
+            return;
+        }
         String idBarang = fieldIdBarang.getText().trim();
         String jumlahText = fieldJumlahBeli.getText().trim();
         String totalBiayaText = fieldTotalBiaya.getText().replaceAll("[^\\d]", "");
@@ -1316,8 +1323,8 @@ public class FormPengeluaran extends javax.swing.JPanel {
     private void cbbx_pilihBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbx_pilihBarangActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbx_pilihBarangActionPerformed
-    
-    
+
+
     private void field_cari_DPengeluaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_cari_DPengeluaranActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_field_cari_DPengeluaranActionPerformed
@@ -1346,11 +1353,11 @@ public class FormPengeluaran extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_batal_FDetailActionPerformed
 
     private void field_cari_DPengeluaranKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field_cari_DPengeluaranKeyReleased
-    
+
     }//GEN-LAST:event_field_cari_DPengeluaranKeyReleased
 
     private void tbl_Daftar_PengeluaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_Daftar_PengeluaranMouseClicked
-        
+
     }//GEN-LAST:event_tbl_Daftar_PengeluaranMouseClicked
 
     private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
@@ -1541,26 +1548,26 @@ public class FormPengeluaran extends javax.swing.JPanel {
     private com.ananta.shape.JTabeel tbl_Daftar_Detail;
     private com.ananta.shape.JTabeel tbl_Daftar_Pengeluaran;
     // End of variables declaration//GEN-END:variables
-    
+
     //FORM PENGELUARAN
     private void setupPanelAwal() {
         pn_hitam_FDetail.setVisible(false);
         pn_abu_FDetail.setVisible(false);
         setUkuranPanelFormPengeluaran(982, 970);
     }
-    
+
     private void setUkuranPanelFormPengeluaran(int tinggiHitam, int tinggiAbu) {
         pn_hitam_FPengeluaran.setPreferredSize(new java.awt.Dimension(
-            pn_hitam_FPengeluaran.getWidth(), tinggiHitam
+                pn_hitam_FPengeluaran.getWidth(), tinggiHitam
         ));
         pn_abu_FPengeluaran.setPreferredSize(new java.awt.Dimension(
-            pn_abu_FPengeluaran.getWidth(), tinggiAbu
+                pn_abu_FPengeluaran.getWidth(), tinggiAbu
         ));
         pn_hitam_FPengeluaran.revalidate();
         pn_abu_FPengeluaran.revalidate();
         this.repaint();
     }
-    
+
     private void ketegoriDepend() {
         boolean isRestock = "Restock Barang".equals(cbbx_pilihKategori.getSelectedItem());
         pn_hitam_FDetail.setVisible(isRestock);
@@ -1662,15 +1669,22 @@ public class FormPengeluaran extends javax.swing.JPanel {
 
     private void isiNamaKasir() {
         try {
-            String sql = "SELECT id_user, username FROM users WHERE role = 'kasir'";
+            // Pastikan 'conn' sudah terinisialisasi dan Session.id_user sudah terisi dari login
+            String sql = "SELECT id_user, username FROM users WHERE id_user = ?";
             PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, Session.id_user);  // Pakai ID user yang login
             ResultSet rs = pst.executeQuery();
+
             if (rs.next()) {
                 idUserTerpilih = rs.getInt("id_user");
                 fieldNamaKasir.setText(rs.getString("username"));
                 fieldNamaKasir.setEditable(false);
                 fieldNamaKasir.setFocusable(false);
+            } else {
+                fieldNamaKasir.setText("Kasir tidak ditemukan");
+                fieldNamaKasir.setEditable(false);
             }
+
             rs.close();
             pst.close();
         } catch (SQLException e) {
@@ -1690,7 +1704,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
             cbbx_pilihKategori.addItem(item);
         }
     }
-    
+
     private void setNilaiAwalTotalHarga() {
         fieldTotalHarga.setText("Rp0");
     }
@@ -1729,7 +1743,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
         ((DecimalFormat) format).setMaximumFractionDigits(0);
         return format.format(value);
     }
-    
+
     private boolean validasiPengeluaran(String kategori, BigDecimal total) {
         if (kategori.equals("Pilih Jenis Pengeluaran")) {
             JOptionPane.showMessageDialog(this, "Silakan pilih jenis pengeluaran.");
@@ -1741,7 +1755,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
         }
         return true;
     }
-    
+
     private boolean cekDuplicateIdPengeluaran(String idPengeluaran) throws SQLException {
         String cekSQL = "SELECT COUNT(*) FROM pengeluaran WHERE id_pengeluaran = ?";
         try (PreparedStatement cekStmt = conn.prepareStatement(cekSQL)) {
@@ -1754,11 +1768,11 @@ public class FormPengeluaran extends javax.swing.JPanel {
         }
         return false;
     }
-    
+
     private void resetFPengeluaran() {
         cbbx_pilihKategori.setSelectedIndex(0);
         fieldTotalHarga.setText("Rp0");
-        ketegoriDepend(); 
+        ketegoriDepend();
         btn_simpan_FPengeluaran.setText("Simpan");
         sedangEditPengeluaran = false;
         idPengeluaranYangSedangDiedit = null;
@@ -1766,7 +1780,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
         hide3btn();
         FPengeluaranDefault();
     }
-    
+
     private void FPengeluaranDefault() {
         String kategori = cbbx_pilihKategori.getSelectedItem().toString();
         String total = fieldTotalHarga.getText().replaceAll("[^\\d]", "");
@@ -1775,7 +1789,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
         boolean FormAktif = !(KategoriDefault && TotalKosong);
         btn_batal_FPengeluaran.setVisible(FormAktif);
     }
-    
+
     //FORM DETAIL RESTOCK BARANG
     private void loadBarangKeComboBox() {
         try {
@@ -1793,7 +1807,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Gagal load barang: " + e.getMessage());
         }
     }
-    
+
     private void setupListenerComboBoxBarang() {
         cbbx_pilihBarang.addActionListener(e -> {
             FDetailDefault(true);
@@ -1821,7 +1835,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
         fieldIdBarang.setEditable(false);
         fieldBarcode.setEditable(false);
     }
-    
+
     private void isiFormDetailRestock(String idPengeluaran) {
         try {
             String sql = """
@@ -1864,7 +1878,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Gagal memuat data detail restock.");
         }
     }
-    
+
     private boolean validasiDetailRestock() {
         String namaBarang = cbbx_pilihBarang.getSelectedItem().toString();
         String idBarang = fieldIdBarang.getText().trim();
@@ -1896,7 +1910,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
         }
         return true;
     }
-    
+
     private void resetFDetailRestock() {
         cbbx_pilihBarang.setSelectedIndex(0);
         fieldIdBarang.setText("");
@@ -1904,7 +1918,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
         fieldJumlahBeli.setText("");
         fieldTotalBiaya.setText("");
     }
-    
+
     private void FDetailDefault(boolean par) {
         String barang = cbbx_pilihBarang.getSelectedItem().toString();
         String jumlah = fieldJumlahBeli.getText().trim();
@@ -1913,7 +1927,6 @@ public class FormPengeluaran extends javax.swing.JPanel {
         btn_batal_FDetail.setVisible(isFormAktif);
     }
 
-    
     //TABEL TABEL
     private void setModelTabelPengeluaran() {
         DefaultTableModel model = new DefaultTableModel();
@@ -1923,7 +1936,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
         model.addColumn("TOTAL BIAYA");
         tbl_Daftar_Pengeluaran.setModel(model);
     }
-    
+
     private void aturLebarKolomPengeluaran() {
         TableColumnModel kolom = tbl_Daftar_Pengeluaran.getColumnModel();
         kolom.getColumn(0).setPreferredWidth(120); // ID Pengeluaran
@@ -1931,7 +1944,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
         kolom.getColumn(2).setPreferredWidth(130); // Kategori
         kolom.getColumn(3).setPreferredWidth(130); // Total Biaya
     }
-    
+
     private void getDataPengeluaran(DefaultTableModel model) {
         model.setRowCount(0);
         try {
@@ -1952,17 +1965,17 @@ public class FormPengeluaran extends javax.swing.JPanel {
             ((DecimalFormat) formatRupiah).setMaximumFractionDigits(0);
             while (rs.next()) {
                 model.addRow(new Object[]{
-                rs.getString("id_pengeluaran"),
-                rs.getString("kasir"),
-                rs.getString("kategori"),
-                formatRupiah.format(rs.getDouble("nominal"))
+                    rs.getString("id_pengeluaran"),
+                    rs.getString("kasir"),
+                    rs.getString("kategori"),
+                    formatRupiah.format(rs.getDouble("nominal"))
                 });
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Gagal memuat data pengeluaran.");
         }
     }
-    
+
     private void aturTampilanDaftarDetail(boolean tampil) {
         pn_hitam_DDetail.setVisible(tampil);
         pn_abu_DDetail.setVisible(tampil);
@@ -1975,7 +1988,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
         btn_lihatDetail.setVisible(!tampil);
         btn_lihatDetail.setEnabled(!tampil);
     }
-    
+
     private void setModelTabelDetailRestock() {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID PENGELUARAN");
@@ -1986,7 +1999,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
         model.addColumn("TOTAL BIAYA");
         tbl_Daftar_Detail.setModel(model);
     }
-    
+
     private void getDataDetailRestock(DefaultTableModel model) {
         model.setRowCount(0);
         try {
@@ -2029,14 +2042,14 @@ public class FormPengeluaran extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Gagal memuat data detail restock.");
         }
     }
-    
+
     private void aktifkanModeEditPengeluaran() {
         int row = tbl_Daftar_Pengeluaran.getSelectedRow();
         if (row == -1) {
             JOptionPane.showMessageDialog(this, "Silakan pilih data yang ingin diedit.");
             return;
         }
-        String id = tbl_Daftar_Pengeluaran.getValueAt(row, 0).toString(); 
+        String id = tbl_Daftar_Pengeluaran.getValueAt(row, 0).toString();
         String namaKasir = tbl_Daftar_Pengeluaran.getValueAt(row, 1).toString();
         String kategori = tbl_Daftar_Pengeluaran.getValueAt(row, 2).toString();
         String total = tbl_Daftar_Pengeluaran.getValueAt(row, 3).toString();
@@ -2047,7 +2060,7 @@ public class FormPengeluaran extends javax.swing.JPanel {
         btn_simpan_FDetail.setText("Update");
         btn_simpan_FPengeluaran.setText("Update");
         sedangEditPengeluaran = true;
-        idPengeluaranYangSedangDiedit = id; 
+        idPengeluaranYangSedangDiedit = id;
         if (kategori.equals("Restock Barang")) {
             FDetailDefault(true);
             isiFormDetailRestock(id);
@@ -2055,23 +2068,23 @@ public class FormPengeluaran extends javax.swing.JPanel {
             FDetailDefault(false);
         }
     }
-    
+
     private boolean isModeEdit() {
-        return sedangEditPengeluaran 
-               && idPengeluaranYangSedangDiedit != null 
-               && fieldIdPengeluaran.getText().equals(idPengeluaranYangSedangDiedit);
+        return sedangEditPengeluaran
+                && idPengeluaranYangSedangDiedit != null
+                && fieldIdPengeluaran.getText().equals(idPengeluaranYangSedangDiedit);
     }
-    
+
     private void batalkanEdit() {
         if (!sedangEditPengeluaran) {
-        return;
+            return;
         }
         int pilihan = JOptionPane.showConfirmDialog(
-            null,
-            "Ingin keluar dari mode edit?",
-            "Konfirmasi",
-            JOptionPane.YES_NO_OPTION,
-            JOptionPane.QUESTION_MESSAGE
+                null,
+                "Ingin keluar dari mode edit?",
+                "Konfirmasi",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
         );
         if (pilihan == JOptionPane.YES_OPTION) {
             cbbx_pilihKategori.setSelectedIndex(0);
@@ -2084,9 +2097,9 @@ public class FormPengeluaran extends javax.swing.JPanel {
             sedangEditPengeluaran = false;
         }
     }
-    
+
     private void hide3btn() {
-        btn_edit.setVisible(false); 
+        btn_edit.setVisible(false);
         btn_batal_DPengeluaran.setVisible(false);
         btn_hapus.setVisible(false);
     }
@@ -2126,66 +2139,166 @@ public class FormPengeluaran extends javax.swing.JPanel {
     }
 
     private void insertRestockBarang(String idPengeluaran, int idUser, int idBarang, int jumlahBarang, BigDecimal nominal) throws SQLException {
-        String sql = """
+        conn.setAutoCommit(false); // Mulai transaksi
+
+        try {
+            String sql = """
             INSERT INTO pengeluaran (id_pengeluaran, id_user, kategori, id_barang, jumlah_barang, nominal)
             VALUES (?, ?, ?, ?, ?, ?)
         """;
-        PreparedStatement pst = conn.prepareStatement(sql);
-        pst.setString(1, idPengeluaran);
-        pst.setInt(2, idUser);
-        pst.setString(3, "Restock Barang");
-        pst.setInt(4, idBarang);
-        pst.setInt(5, jumlahBarang);
-        pst.setBigDecimal(6, nominal);
-        pst.executeUpdate();
-        pst.close();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, idPengeluaran);
+            pst.setInt(2, idUser);
+            pst.setString(3, "Restock Barang");
+            pst.setInt(4, idBarang);
+            pst.setInt(5, jumlahBarang);
+            pst.setBigDecimal(6, nominal);
+            pst.executeUpdate();
+            pst.close();
+
+            // Tambah ke jumlah di tabel barang
+            String updateJumlah = "UPDATE barang SET jumlah = jumlah + ? WHERE id_barang = ?";
+            PreparedStatement pstJumlah = conn.prepareStatement(updateJumlah);
+            pstJumlah.setInt(1, jumlahBarang);
+            pstJumlah.setInt(2, idBarang);
+            pstJumlah.executeUpdate();
+            pstJumlah.close();
+
+            conn.commit();
+        } catch (SQLException e) {
+            conn.rollback();
+            throw e;
+        } finally {
+            conn.setAutoCommit(true);
+        }
     }
 
-    private void updateRestockBarang(String idPengeluaran, int idUser, int idBarang, int jumlahBarang, BigDecimal nominal) throws SQLException {
-        String sql = """
+    private void updateRestockBarang(String idPengeluaran, int idUser, int idBarang, int jumlahBarangBaru, BigDecimal nominal) throws SQLException {
+        conn.setAutoCommit(false); // Mulai transaksi
+
+        try {
+            // Ambil jumlah_barang lama dari pengeluaran
+            int jumlahBarangLama = 0;
+            String selectSql = "SELECT jumlah_barang FROM pengeluaran WHERE id_pengeluaran = ?";
+            PreparedStatement pstSelect = conn.prepareStatement(selectSql);
+            pstSelect.setString(1, idPengeluaran);
+            ResultSet rs = pstSelect.executeQuery();
+            if (rs.next()) {
+                jumlahBarangLama = rs.getInt("jumlah_barang");
+            }
+            rs.close();
+            pstSelect.close();
+
+            int selisih = jumlahBarangBaru - jumlahBarangLama;
+
+            // Update data pengeluaran
+            String updateSql = """
             UPDATE pengeluaran 
             SET id_user = ?, kategori = ?, id_barang = ?, jumlah_barang = ?, nominal = ?
             WHERE id_pengeluaran = ?
         """;
-        PreparedStatement pst = conn.prepareStatement(sql);
-        pst.setInt(1, idUser);
-        pst.setString(2, "Restock Barang");
-        pst.setInt(3, idBarang);
-        pst.setInt(4, jumlahBarang);
-        pst.setBigDecimal(5, nominal);
-        pst.setString(6, idPengeluaran);
-        pst.executeUpdate();
-        pst.close();
+            PreparedStatement pst = conn.prepareStatement(updateSql);
+            pst.setInt(1, idUser);
+            pst.setString(2, "Restock Barang");
+            pst.setInt(3, idBarang);
+            pst.setInt(4, jumlahBarangBaru);
+            pst.setBigDecimal(5, nominal);
+            pst.setString(6, idPengeluaran);
+            pst.executeUpdate();
+            pst.close();
+
+            // Update jumlah di tabel barang
+            String updateJumlah = "UPDATE barang SET jumlah = jumlah + ? WHERE id_barang = ?";
+            PreparedStatement pstJumlah = conn.prepareStatement(updateJumlah);
+            pstJumlah.setInt(1, selisih);
+            pstJumlah.setInt(2, idBarang);
+            pstJumlah.executeUpdate();
+            pstJumlah.close();
+
+            conn.commit();
+        } catch (SQLException e) {
+            conn.rollback();
+            throw e;
+        } finally {
+            conn.setAutoCommit(true);
+        }
     }
-    
+
     private void deleteData() {
         int selectedRow = tbl_Daftar_Pengeluaran.getSelectedRow();
         if (selectedRow == -1) {
             JOptionPane.showMessageDialog(this, "Pilih data pengeluaran yang ingin dihapus terlebih dahulu.", "Peringatan", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        int confirm = JOptionPane.showConfirmDialog(this,
-            "Yakin ingin menghapus data ini?",
-            "Konfirmasi Hapus Data",
-            JOptionPane.YES_NO_OPTION
-        );
-        if (confirm == JOptionPane.YES_OPTION) {
-            String id = tbl_Daftar_Pengeluaran.getValueAt(selectedRow, 0).toString();
-            String sql = "DELETE FROM pengeluaran WHERE id_pengeluaran = ?";
-            try (PreparedStatement st = conn.prepareStatement(sql)) {
-                st.setString(1, id);
-                int rowDeleted = st.executeUpdate();
 
-                if (rowDeleted > 0) {
-                    JOptionPane.showMessageDialog(this, "Data berhasil dihapus.");
-                    getDataPengeluaran((DefaultTableModel) tbl_Daftar_Pengeluaran.getModel());
-                    getDataDetailRestock((DefaultTableModel) tbl_Daftar_Detail.getModel());
-                } else {
-                    JOptionPane.showMessageDialog(this, "Data gagal dihapus.");
+        int confirm = JOptionPane.showConfirmDialog(this,
+                "Yakin ingin menghapus data ini?",
+                "Konfirmasi Hapus Data",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            String idPengeluaran = tbl_Daftar_Pengeluaran.getValueAt(selectedRow, 0).toString();
+
+            String selectSql = "SELECT id_barang, jumlah_barang FROM pengeluaran WHERE id_pengeluaran = ?";
+            String deleteSql = "DELETE FROM pengeluaran WHERE id_pengeluaran = ?";
+            String updateBarangSql = "UPDATE barang SET jumlah = jumlah - ? WHERE id_barang = ?";
+
+            try {
+                conn.setAutoCommit(false); // Mulai transaksi
+
+                int idBarang = 0;
+                int jumlahBarang = 0;
+
+                // Ambil data pengeluaran sebelum hapus
+                try (PreparedStatement pstSelect = conn.prepareStatement(selectSql)) {
+                    pstSelect.setString(1, idPengeluaran);
+                    ResultSet rs = pstSelect.executeQuery();
+                    if (rs.next()) {
+                        idBarang = rs.getInt("id_barang");
+                        jumlahBarang = rs.getInt("jumlah_barang");
+                    }
+                    rs.close();
                 }
+
+                // Update stok barang (rollback restock)
+                try (PreparedStatement pstUpdate = conn.prepareStatement(updateBarangSql)) {
+                    pstUpdate.setInt(1, jumlahBarang);
+                    pstUpdate.setInt(2, idBarang);
+                    pstUpdate.executeUpdate();
+                }
+
+                // Hapus data pengeluaran
+                try (PreparedStatement pstDelete = conn.prepareStatement(deleteSql)) {
+                    pstDelete.setString(1, idPengeluaran);
+                    int rowDeleted = pstDelete.executeUpdate();
+
+                    if (rowDeleted > 0) {
+                        conn.commit(); // Semua berhasil
+                        JOptionPane.showMessageDialog(this, "Data berhasil dihapus dan stok dikurangi.");
+                        getDataPengeluaran((DefaultTableModel) tbl_Daftar_Pengeluaran.getModel());
+                        getDataDetailRestock((DefaultTableModel) tbl_Daftar_Detail.getModel());
+                    } else {
+                        conn.rollback(); // Gagal hapus
+                        JOptionPane.showMessageDialog(this, "Data gagal dihapus.");
+                    }
+                }
+
             } catch (SQLException e) {
+                try {
+                    conn.rollback();
+                } catch (SQLException ex) {
+                    // Log error rollback
+                }
                 JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                try {
+                    conn.setAutoCommit(true);
+                } catch (SQLException ex) {
+                    // Log error set auto-commit
+                }
             }
         }
     }
+
 }

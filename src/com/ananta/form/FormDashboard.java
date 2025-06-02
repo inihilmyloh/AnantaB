@@ -13,7 +13,10 @@ import org.jfree.data.general.DefaultPieDataset;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
+import java.util.Locale;
 import javax.swing.SwingUtilities;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -155,7 +158,7 @@ public class FormDashboard extends javax.swing.JPanel {
 
             // Buat LineChart dengan dataset
             JFreeChart lineChart = ChartFactory.createLineChart(
-                    "nominal Transaksi Harian (Bulan Ini)",
+                    "Nominal Transaksi Harian (Bulan Ini)",
                     "Tanggal", "nominal Transaksi",
                     dataset,
                     PlotOrientation.VERTICAL,
@@ -202,22 +205,23 @@ public class FormDashboard extends javax.swing.JPanel {
         panelLineChart = new com.ananta.shape.shapecustom();
         shapecustom1 = new com.ananta.shape.shapecustom();
         shapecustom4 = new com.ananta.shape.shapecustom();
+        jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         Label_Pelanggan = new javax.swing.JLabel();
         shapecustom2 = new com.ananta.shape.shapecustom();
         shapecustom6 = new com.ananta.shape.shapecustom();
+        jLabel11 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         Label_Pemasukan = new javax.swing.JLabel();
         shapecustom3 = new com.ananta.shape.shapecustom();
         shapecustom7 = new com.ananta.shape.shapecustom();
+        jLabel12 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         Label_Pengeluaran = new javax.swing.JLabel();
         shapecustom5 = new com.ananta.shape.shapecustom();
         shapecustom8 = new com.ananta.shape.shapecustom();
+        jLabel13 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         Label_Laba = new javax.swing.JLabel();
         panelPieChart = new com.ananta.shape.shapecustom();
         jLabel1 = new javax.swing.JLabel();
@@ -239,18 +243,27 @@ public class FormDashboard extends javax.swing.JPanel {
         shapecustom1.setRoundTopRight(30);
 
         shapecustom4.setBackground(new java.awt.Color(1, 121, 6));
+        shapecustom4.setPreferredSize(new java.awt.Dimension(150, 138));
         shapecustom4.setRoundBottomLeft(30);
         shapecustom4.setRoundTopLeft(30);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ananta/icon/customer.png"))); // NOI18N
 
         javax.swing.GroupLayout shapecustom4Layout = new javax.swing.GroupLayout(shapecustom4);
         shapecustom4.setLayout(shapecustom4Layout);
         shapecustom4Layout.setHorizontalGroup(
             shapecustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGroup(shapecustom4Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel3)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         shapecustom4Layout.setVerticalGroup(
             shapecustom4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(shapecustom4Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel7.setFont(new java.awt.Font("Cambria", 1, 30)); // NOI18N
@@ -281,7 +294,7 @@ public class FormDashboard extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Label_Pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addComponent(shapecustom4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(shapecustom4, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
         );
 
         shapecustom2.setRoundBottomLeft(30);
@@ -290,26 +303,32 @@ public class FormDashboard extends javax.swing.JPanel {
         shapecustom2.setRoundTopRight(30);
 
         shapecustom6.setBackground(new java.awt.Color(239, 167, 0));
+        shapecustom6.setPreferredSize(new java.awt.Dimension(150, 138));
         shapecustom6.setRoundBottomLeft(30);
         shapecustom6.setRoundTopLeft(30);
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ananta/icon/income.png"))); // NOI18N
 
         javax.swing.GroupLayout shapecustom6Layout = new javax.swing.GroupLayout(shapecustom6);
         shapecustom6.setLayout(shapecustom6Layout);
         shapecustom6Layout.setHorizontalGroup(
             shapecustom6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGroup(shapecustom6Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel11)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         shapecustom6Layout.setVerticalGroup(
             shapecustom6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shapecustom6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(42, 42, 42))
         );
 
         jLabel6.setFont(new java.awt.Font("Cambria", 1, 30)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Pemasukan");
-
-        jLabel5.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
-        jLabel5.setText("Rp.");
 
         Label_Pemasukan.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
         Label_Pemasukan.setText("00000");
@@ -321,24 +340,19 @@ public class FormDashboard extends javax.swing.JPanel {
             .addGroup(shapecustom2Layout.createSequentialGroup()
                 .addComponent(shapecustom6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(shapecustom2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label_Pemasukan, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                    .addComponent(Label_Pemasukan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         shapecustom2Layout.setVerticalGroup(
             shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(shapecustom6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(shapecustom6, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
             .addGroup(shapecustom2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Label_Pemasukan, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Label_Pemasukan, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -351,23 +365,28 @@ public class FormDashboard extends javax.swing.JPanel {
         shapecustom7.setRoundBottomLeft(30);
         shapecustom7.setRoundTopLeft(30);
 
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ananta/icon/expenditure.png"))); // NOI18N
+
         javax.swing.GroupLayout shapecustom7Layout = new javax.swing.GroupLayout(shapecustom7);
         shapecustom7.setLayout(shapecustom7Layout);
         shapecustom7Layout.setHorizontalGroup(
             shapecustom7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGroup(shapecustom7Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel12)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         shapecustom7Layout.setVerticalGroup(
             shapecustom7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shapecustom7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addGap(42, 42, 42))
         );
 
         jLabel4.setFont(new java.awt.Font("Cambria", 1, 30)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Pengeluaran");
-
-        jLabel8.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
-        jLabel8.setText("Rp.");
 
         Label_Pengeluaran.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
         Label_Pengeluaran.setText("00000");
@@ -380,11 +399,8 @@ public class FormDashboard extends javax.swing.JPanel {
                 .addComponent(shapecustom7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(shapecustom3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(shapecustom3Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label_Pengeluaran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .addComponent(Label_Pengeluaran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         shapecustom3Layout.setVerticalGroup(
@@ -394,9 +410,7 @@ public class FormDashboard extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(shapecustom3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Label_Pengeluaran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Label_Pengeluaran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -409,23 +423,28 @@ public class FormDashboard extends javax.swing.JPanel {
         shapecustom8.setRoundBottomLeft(30);
         shapecustom8.setRoundTopLeft(30);
 
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ananta/icon/laba.png"))); // NOI18N
+
         javax.swing.GroupLayout shapecustom8Layout = new javax.swing.GroupLayout(shapecustom8);
         shapecustom8.setLayout(shapecustom8Layout);
         shapecustom8Layout.setHorizontalGroup(
             shapecustom8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGroup(shapecustom8Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel13)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         shapecustom8Layout.setVerticalGroup(
             shapecustom8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shapecustom8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel13)
+                .addGap(42, 42, 42))
         );
 
         jLabel9.setFont(new java.awt.Font("Cambria", 1, 30)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Laba");
-
-        jLabel10.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
-        jLabel10.setText("Rp.");
 
         Label_Laba.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
         Label_Laba.setText("00000");
@@ -438,11 +457,8 @@ public class FormDashboard extends javax.swing.JPanel {
                 .addComponent(shapecustom8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(shapecustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(shapecustom5Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label_Laba, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .addComponent(Label_Laba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         shapecustom5Layout.setVerticalGroup(
@@ -452,9 +468,7 @@ public class FormDashboard extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(shapecustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Label_Laba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Label_Laba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -488,7 +502,7 @@ public class FormDashboard extends javax.swing.JPanel {
                             .addComponent(shapecustom5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(panelLineChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelPieChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -514,7 +528,7 @@ public class FormDashboard extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1625, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -529,12 +543,13 @@ public class FormDashboard extends javax.swing.JPanel {
     private javax.swing.JLabel Label_Pemasukan;
     private javax.swing.JLabel Label_Pengeluaran;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -550,7 +565,12 @@ public class FormDashboard extends javax.swing.JPanel {
     private com.ananta.shape.shapecustom shapecustom8;
     // End of variables declaration//GEN-END:variables
 
-    private int jumlahTransaksiHariIni() {
+    private String formatRupiah(int angka) {
+        DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(new Locale("id", "ID"));
+        return "Rp " + formatter.format(angka);
+    }
+
+    private String jumlahTransaksiHariIni() {
         int totalTransaksi = 0;
 
         try {
@@ -565,10 +585,10 @@ public class FormDashboard extends javax.swing.JPanel {
             e.printStackTrace();
         }
 
-        return totalTransaksi;
+        return String.valueOf(totalTransaksi);
     }
 
-    private int jumlahPemasukanHariIni() {
+    private String jumlahPemasukanHariIni() {
         int totalPemasukan = 0;
 
         try {
@@ -583,10 +603,10 @@ public class FormDashboard extends javax.swing.JPanel {
             e.printStackTrace();
         }
 
-        return totalPemasukan;
+        return formatRupiah(totalPemasukan);
     }
 
-    private int jumlahPengeluaranHariIni() {
+    private String jumlahPengeluaranHariIni() {
         int totalPengeluaran = 0;
 
         try {
@@ -601,10 +621,10 @@ public class FormDashboard extends javax.swing.JPanel {
             e.printStackTrace();
         }
 
-        return totalPengeluaran;
+        return formatRupiah(totalPengeluaran);
     }
 
-    private int jumlahLabaHariIni() {
+    private String jumlahLabaHariIni() {
         int totalPemasukan = 0;
         int totalPengeluaran = 0;
 
@@ -629,8 +649,8 @@ public class FormDashboard extends javax.swing.JPanel {
             e.printStackTrace();
         }
 
-        // Laba = pemasukan - pengeluaran
-        return totalPemasukan - totalPengeluaran;
+        int laba = totalPemasukan - totalPengeluaran;
+        return formatRupiah(laba);
     }
 
     private void AmbilData() {

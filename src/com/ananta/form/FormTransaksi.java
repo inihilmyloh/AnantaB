@@ -1,6 +1,8 @@
 package com.ananta.form;
 
 import com.ananta.database.Database;
+import com.ananta.main.FormMenuUtama;
+import com.ananta.main.FormMenuUtama.Session;
 import java.awt.Component;
 import java.awt.event.*;
 import java.math.BigDecimal;
@@ -32,6 +34,8 @@ public class FormTransaksi extends javax.swing.JPanel {
         loadComboBoxJasa();
         KasirText.setEditable(false);
         KasirText.setFocusable(false);
+        this.idKasir = FormMenuUtama.Session.id_user;
+        KasirText.setText(FormMenuUtama.Session.username);
         TotalHargaText.setEditable(false);
         TotalHargaText.setFocusable(false);
         KembaliText.setEditable(false);
@@ -146,7 +150,6 @@ public class FormTransaksi extends javax.swing.JPanel {
     private Map<String, Integer> barberMap = new HashMap<>();
     Map<Integer, Integer> keranjangBarang = new HashMap<>();
     Stack<Runnable> undoStack = new Stack<>();
-    private Map<String, Integer> namaKeIdKasir = new HashMap<>();
     private List<String> jasaList = new ArrayList<>();
     private int totalHarga = 0;
     private int idKasir;
@@ -156,11 +159,6 @@ public class FormTransaksi extends javax.swing.JPanel {
     private void updateTotalHarga() {
         int total = totalHargaBarang + totalHargaJasa;
         TotalHargaText.setText(formatRupiah(total));
-    }
-
-    public void setKasir(int id, String nama) {
-        this.idKasir = id;
-        KasirText.setText(nama); // tampilkan nama di field
     }
 
     private void loadComboBoxJasa() {
@@ -577,7 +575,7 @@ public class FormTransaksi extends javax.swing.JPanel {
                 // Mode simpan baru
                 String sqlTransaksi = "INSERT INTO transaksi (id_user, total_harga, metode_pembayaran, bayar, kembali, created_at) VALUES (?, ?, ?, ?, ?, NOW())";
                 PreparedStatement pstTrans = conn.prepareStatement(sqlTransaksi, Statement.RETURN_GENERATED_KEYS);
-                pstTrans.setInt(1, 2); // Ganti ke id user login jika sudah ada sistem login
+                pstTrans.setInt(1,  Session.id_user); 
                 pstTrans.setInt(2, total);
                 pstTrans.setString(3, metode);
                 pstTrans.setInt(4, bayar);

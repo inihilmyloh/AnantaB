@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Strukkasir" language="groovy" pageWidth="164" pageHeight="842" columnWidth="144" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" isIgnorePagination="true" uuid="6e474b57-1bd5-4945-98e3-8dd6ef0e1810">
 	<property name="ireport.zoom" value="3.797498335832415"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="245"/>
+	<property name="ireport.y" value="8"/>
 	<parameter name="id_transaksi" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -53,7 +53,7 @@ WHERE t.id_transaksi = $P{id_transaksi}]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Consolas" isBold="true"/>
 				</textElement>
-				<text><![CDATA[ANANTA BERBERSHOP]]></text>
+				<text><![CDATA[ANANTA BARBERSHOP]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="45" width="144" height="10" uuid="192a131b-b99e-4ecc-8cdf-384432cab9bf"/>

@@ -1,4 +1,5 @@
 package com.ananta.form;
+
 import com.ananta.main.FormMenuUtama;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.util.UIScale;
@@ -23,18 +24,23 @@ import javax.swing.*;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class FormLogin extends javax.swing.JPanel {
-    
+
     private CardLayout cardLayout;
     private JPanel parent;
-  
-    public FormLogin(CardLayout layout, JPanel parentPanel) {   
+
+    public FormLogin(CardLayout layout, JPanel parentPanel) {
         initComponents();
         setLayoutForm();
         setVisible(true);
         this.cardLayout = layout;
-        this.parent = parentPanel;       
+        this.parent = parentPanel;
     }
 
+    public void resetForm() {
+        UsernamePane.setText("");
+        PasswordPane.setText("");
+        UsernamePane.requestFocus();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -169,7 +175,7 @@ public class FormLogin extends javax.swing.JPanel {
         String username = UsernamePane.getText().trim();
         String password = new String(PasswordPane.getPassword()).trim();
         String requiredRole; // Ganti dengan role yang kamu inginkan
-        
+
         if (username.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Tolong isi username dan password.");
             return;
@@ -196,12 +202,13 @@ public class FormLogin extends javax.swing.JPanel {
                         // Simpan ke session
                         Session.username = rs.getString("username");
                         Session.role = requiredRole;
+                        Session.id_user = rs.getInt("id_user");
 
                         JOptionPane.showMessageDialog(this, "Login berhasil sebagai " + requiredRole + "!");
 
                         // Pindah ke menu utama
                         FormMenuUtama.login();
-                        
+
                     } else {
                         JOptionPane.showMessageDialog(this, "Username atau password salah!");
                         UsernamePane.setText("");
@@ -220,9 +227,15 @@ public class FormLogin extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Terjadi kesalahan pada database.");
             } finally {
                 try {
-                    if (rs != null) rs.close();
-                    if (pst != null) pst.close();
-                    if (conn != null) conn.close();
+                    if (rs != null) {
+                        rs.close();
+                    }
+                    if (pst != null) {
+                        pst.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -273,8 +286,8 @@ public class FormLogin extends javax.swing.JPanel {
     private void setLayoutForm() {
         setLayout(new FormLoginLayout());
         PanelLogin.setLayout(new LoginLayout());
-        PanelLogin.setGradient(new Color(32,103,27), new Color (255, 255, 255, 1));
-        
+        PanelLogin.setGradient(new Color(32, 103, 27), new Color(255, 255, 255, 1));
+
         // Gaya PanelLogin
         PanelLogin.putClientProperty(FlatClientProperties.STYLE, ""
                 + "background:lighten(@background,5%);"
@@ -304,7 +317,6 @@ public class FormLogin extends javax.swing.JPanel {
 
         // ✅ Atur tinggi dan lebar ButtonLogin
         LoginButton.setPreferredSize(new Dimension(120, 40));
-        
 
     }
 
@@ -324,7 +336,7 @@ public class FormLogin extends javax.swing.JPanel {
         public Dimension preferredLayoutSize(Container parent) {
             synchronized (parent.getTreeLock()) {
                 return new Dimension(0, 0);
-                
+
             }
         }
 
@@ -372,7 +384,7 @@ public class FormLogin extends javax.swing.JPanel {
         public Dimension preferredLayoutSize(Container parent) {
             synchronized (parent.getTreeLock()) {
                 Insets insets = parent.getInsets();
-               
+
                 int height = insets.top + insets.bottom;
 
                 height += ImageIcon.getPreferredSize().height;
@@ -439,14 +451,14 @@ public class FormLogin extends javax.swing.JPanel {
                 LoginButton.setBounds(buttonX, y, buttonWidth, LoginButton.getPreferredSize().height);
 
                 // Tombol "Lupa Password"
-           // Tentukan ukuran dan posisi manual untuk LupaButton
+                // Tentukan ukuran dan posisi manual untuk LupaButton
                 int lupaButtonWidth = 150;
                 int lupaButtonHeight = 30;
                 int lupaButtonX = x + 4;  // dari kiri
                 int lupaButtonY = y + -20;       // bisa atur manual y
                 lupaButton.setBounds(lupaButtonX, lupaButtonY, lupaButtonWidth, lupaButtonHeight);
-                y += lupaButtonHeight + UIScale.scale(buttonGap);             
-                
+                y += lupaButtonHeight + UIScale.scale(buttonGap);
+
                 // Login Button (posisi dan ukuran manual)
                 int loginButtonWidth = 320;
                 int loginButtonHeight = 40;
@@ -460,7 +472,7 @@ public class FormLogin extends javax.swing.JPanel {
                 int RegisterButtonX = x + 180;  // dari kiri
                 int RegisterButtonY = y + -141;       // bisa atur manual y
                 registerButton.setBounds(RegisterButtonX, RegisterButtonY, RegisterButtonWidth, RegisterButtonHeight);
-                y += RegisterButtonHeight + UIScale.scale(buttonGap); 
+                y += RegisterButtonHeight + UIScale.scale(buttonGap);
 
             }
         }
