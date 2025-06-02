@@ -1,21 +1,23 @@
 package com.ananta.shape;
 
 import javax.swing.*;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 import java.awt.*;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.awt.geom.RoundRectangle2D;
 
 public class CustomComboBox extends JComboBox<String> {
 
-    private Color backgroundColor = Color.WHITE;
+    private Color backgroundColor = new Color(242, 242, 242);
+    private Color selectionColor = new Color(230, 230, 230);
     private Color textColor = Color.BLACK;
     private int radius = 20;
-    private Color selectionColor = new Color(200, 255, 200); // Warna saat opsi dipilih
+    private int hoverIndex = -1;
 
     public CustomComboBox() {
-        this(Color.WHITE, Color.BLACK, 20);
+        this(new Color(242, 242, 242), Color.BLACK, 20);
     }
 
     public CustomComboBox(Color backgroundColor, Color textColor, int radius) {
@@ -37,24 +39,84 @@ public class CustomComboBox extends JComboBox<String> {
         setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
         setForeground(textColor);
 
-        // Set renderer custom
         setRenderer(new CustomComboBoxRenderer());
 
-// Menambahkan listener untuk mendeteksi pemilihan item
         this.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
-                    // Cek jika item dipilih dan bukan item default
-                    if (getSelectedIndex() != 0) {  // Opsi pertama adalah "Pilih Opsi"
-                        setBackgroundColor(selectionColor);  // Ubah background saat opsi dipilih
+                    if (getSelectedIndex() != 0) {
+                        setBackgroundColor(selectionColor);
                     } else {
-                        setBackgroundColor(backgroundColor);  // Kembali ke background default jika opsi "Pilih Opsi"
+                        setBackgroundColor(backgroundColor);
                     }
                 }
             }
         });
 
+        addPopupMenuListener(new PopupMenuListener() {
+            @Override
+            public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
+                SwingUtilities.invokeLater(() -> {
+                    JList<?> list = getList();
+                    if (list != null) {
+                        list.addMouseMotionListener(new MouseMotionAdapter() {
+                            @Override
+                            public void mouseMoved(MouseEvent e) {
+                                int index = list.locationToIndex(e.getPoint());
+                                if (index != hoverIndex) {
+                                    hoverIndex = index;
+                                    list.repaint();
+                                }
+                            }
+                        });
+
+                        list.addMouseListener(new MouseAdapter() {
+                            @Override
+                            public void mouseExited(MouseEvent e) {
+                                hoverIndex = -1;
+                                list.repaint();
+                            }
+
+                            @Override
+                            public void mouseEntered(MouseEvent e) {
+                                int index = list.locationToIndex(e.getPoint());
+                                if (index != hoverIndex) {
+                                    hoverIndex = index;
+                                    list.repaint();
+                                }
+                            }
+                        });
+
+                        // 🆕 Tambahkan ini untuk trigger hover awal
+                        Point mousePos = MouseInfo.getPointerInfo().getLocation();
+                        SwingUtilities.convertPointFromScreen(mousePos, list);
+                        int index = list.locationToIndex(mousePos);
+                        if (index != hoverIndex && index >= 0 && index < list.getModel().getSize()) {
+                            hoverIndex = index;
+                            list.repaint();
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
+            }
+
+            @Override
+            public void popupMenuCanceled(PopupMenuEvent e) {
+            }
+        });
+
+    }
+
+    private JList<?> getList() {
+        Object popup = getUI().getAccessibleChild(this, 0);
+        if (popup instanceof javax.swing.plaf.basic.ComboPopup) {
+            return ((javax.swing.plaf.basic.ComboPopup) popup).getList();
+        }
+        return null;
     }
 
     public void setBackgroundColor(Color color) {
@@ -118,21 +180,26 @@ public class CustomComboBox extends JComboBox<String> {
 
                 int w = getWidth();
                 int h = getHeight();
-                int size = Math.min(w, h) / 3;
-                int x = (w - size) / 2;
-                int y = (h - size) / 2;
+
+                int triangleWidth = 10;
+                int triangleHeight = 6;
+
+                int x = (w - triangleWidth) / 2;
+                int y = (h - triangleHeight) / 2;
+
+                Polygon triangle = new Polygon();
+                triangle.addPoint(x, y);
+                triangle.addPoint(x + triangleWidth, y);
+                triangle.addPoint(x + triangleWidth / 2, y + triangleHeight);
 
                 g2.setColor(textColor);
-                g2.setStroke(new BasicStroke(2f));
-                g2.drawLine(x, y, x + size / 2, y + size);
-                g2.drawLine(x + size / 2, y + size, x + size, y);
+                g2.fill(triangle);
 
                 g2.dispose();
             }
         }
     }
 
-    // Renderer custom
     private class CustomComboBoxRenderer extends DefaultListCellRenderer {
 
         @Override
@@ -141,8 +208,16 @@ public class CustomComboBox extends JComboBox<String> {
             JLabel label = (JLabel) super.getListCellRendererComponent(
                     list, value, index, isSelected, cellHasFocus);
             label.setOpaque(true);
-            label.setBackground(backgroundColor); // Background sama kayak combobox
-            label.setForeground(textColor); // Warna text sama juga
+            label.setForeground(textColor);
+
+            if (isSelected) {
+                label.setBackground(selectionColor);
+            } else if (index == hoverIndex) {
+                label.setBackground(new Color(245, 245, 245)); // Warna hover abu muda
+            } else {
+                label.setBackground(backgroundColor);
+            }
+
             return label;
         }
     }
