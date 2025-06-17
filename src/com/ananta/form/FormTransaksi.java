@@ -879,7 +879,6 @@ public class FormTransaksi extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         DetailTotalText = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        ResetBT = new com.ananta.shape.CustomButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         RiwayatTB = new com.ananta.shape.JTabeel();
         jLabel8 = new javax.swing.JLabel();
@@ -892,21 +891,22 @@ public class FormTransaksi extends javax.swing.JPanel {
         BarberCB = new com.ananta.shape.CustomComboBox();
         PaymentCB = new com.ananta.shape.CustomComboBox();
         JasaCB = new com.ananta.shape.CustomComboBox();
-        TambahBT = new com.ananta.shape.CustomButton();
-        SelesaiBT = new com.ananta.shape.CustomButton();
         shapecustom6 = new com.ananta.shape.shapecustom();
         KasirText = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        UndoBT = new com.ananta.shape.CustomButton();
-        CetakBT = new com.ananta.shape.CustomButton();
-        EditBT = new com.ananta.shape.CustomButton();
-        HapusBT = new com.ananta.shape.CustomButton();
         shapecustom13 = new com.ananta.shape.shapecustom();
         KembaliText = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         shapecustom8 = new com.ananta.shape.shapecustom();
         barcodeText = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        TambahBT = new com.ananta.shape.CustomButton();
+        ResetBT = new com.ananta.shape.CustomButton();
+        EditBT = new com.ananta.shape.CustomButton();
+        CetakBT = new com.ananta.shape.CustomButton();
+        SelesaiBT = new com.ananta.shape.CustomButton();
+        HapusBT = new com.ananta.shape.CustomButton();
+        UndoBT = new com.ananta.shape.CustomButton();
 
         shapecustom2.setBackground(new java.awt.Color(212, 212, 212));
         shapecustom2.setPreferredSize(new java.awt.Dimension(1427, 887));
@@ -949,7 +949,7 @@ public class FormTransaksi extends javax.swing.JPanel {
             .addGroup(shapecustom5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(shapecustom5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addComponent(TotalHargaText, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -959,23 +959,13 @@ public class FormTransaksi extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addComponent(TotalHargaText, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jLabel4.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(1, 0, 0));
         jLabel4.setText("Kembali");
-
-        ResetBT.setText("Reset");
-        ResetBT.setDefaultColor(new java.awt.Color(220, 53, 69));
-        ResetBT.setHoverColor(new java.awt.Color(180, 40, 55));
-        ResetBT.setPressedColor(new java.awt.Color(180, 40, 55));
-        ResetBT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ResetBTActionPerformed(evt);
-            }
-        });
 
         RiwayatTB.setForeground(new java.awt.Color(1, 0, 0));
         RiwayatTB.setModel(new javax.swing.table.DefaultTableModel(
@@ -992,7 +982,7 @@ public class FormTransaksi extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(1, 0, 0));
         jLabel8.setText("Jasa");
 
-        jLabel9.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Bookman Old Style", 1, 30)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(1, 0, 0));
         jLabel9.setText("Transaksi");
 
@@ -1021,9 +1011,9 @@ public class FormTransaksi extends javax.swing.JPanel {
         shapecustom12.setLayout(shapecustom12Layout);
         shapecustom12Layout.setHorizontalGroup(
             shapecustom12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shapecustom12Layout.createSequentialGroup()
+            .addGroup(shapecustom12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BayarText)
+                .addComponent(BayarText, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         shapecustom12Layout.setVerticalGroup(
@@ -1060,26 +1050,6 @@ public class FormTransaksi extends javax.swing.JPanel {
         JasaCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JasaCBActionPerformed(evt);
-            }
-        });
-
-        TambahBT.setText("Tambah");
-        TambahBT.setDefaultColor(new java.awt.Color(0, 123, 255));
-        TambahBT.setHoverColor(new java.awt.Color(0, 90, 190));
-        TambahBT.setPressedColor(new java.awt.Color(0, 90, 190));
-        TambahBT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TambahBTActionPerformed(evt);
-            }
-        });
-
-        SelesaiBT.setText("Selesai");
-        SelesaiBT.setDefaultColor(new java.awt.Color(40, 167, 69));
-        SelesaiBT.setHoverColor(new java.awt.Color(30, 120, 50));
-        SelesaiBT.setPressedColor(new java.awt.Color(30, 120, 50));
-        SelesaiBT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SelesaiBTActionPerformed(evt);
             }
         });
 
@@ -1120,46 +1090,6 @@ public class FormTransaksi extends javax.swing.JPanel {
         jLabel12.setForeground(new java.awt.Color(1, 0, 0));
         jLabel12.setText("Barang");
 
-        UndoBT.setText("Undo");
-        UndoBT.setDefaultColor(new java.awt.Color(255, 140, 0));
-        UndoBT.setHoverColor(new java.awt.Color(200, 100, 0));
-        UndoBT.setPressedColor(new java.awt.Color(200, 100, 0));
-        UndoBT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UndoBTActionPerformed(evt);
-            }
-        });
-
-        CetakBT.setText("Cetak");
-        CetakBT.setDefaultColor(new java.awt.Color(102, 178, 255));
-        CetakBT.setHoverColor(new java.awt.Color(70, 140, 210));
-        CetakBT.setPressedColor(new java.awt.Color(70, 140, 210));
-        CetakBT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CetakBTActionPerformed(evt);
-            }
-        });
-
-        EditBT.setText("Edit");
-        EditBT.setDefaultColor(new java.awt.Color(255, 140, 0));
-        EditBT.setHoverColor(new java.awt.Color(200, 100, 0));
-        EditBT.setPressedColor(new java.awt.Color(200, 100, 0));
-        EditBT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditBTActionPerformed(evt);
-            }
-        });
-
-        HapusBT.setText("Hapus");
-        HapusBT.setDefaultColor(new java.awt.Color(220, 53, 69));
-        HapusBT.setHoverColor(new java.awt.Color(180, 40, 55));
-        HapusBT.setPressedColor(new java.awt.Color(180, 40, 55));
-        HapusBT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HapusBTActionPerformed(evt);
-            }
-        });
-
         shapecustom13.setBackground(new java.awt.Color(255, 255, 255));
         shapecustom13.setRoundBottomLeft(20);
         shapecustom13.setRoundBottomRight(20);
@@ -1182,7 +1112,7 @@ public class FormTransaksi extends javax.swing.JPanel {
             shapecustom13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shapecustom13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(KembaliText)
+                .addComponent(KembaliText, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                 .addContainerGap())
         );
         shapecustom13Layout.setVerticalGroup(
@@ -1228,21 +1158,99 @@ public class FormTransaksi extends javax.swing.JPanel {
                 .addComponent(barcodeText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jLabel14.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Bookman Old Style", 1, 30)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(1, 0, 0));
         jLabel14.setText("Riwayat Transaksi");
+
+        TambahBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ananta/ui/ux/icon_tambah.png"))); // NOI18N
+        TambahBT.setText("Tambah");
+        TambahBT.setDefaultColor(new java.awt.Color(51, 204, 0));
+        TambahBT.setFont(new java.awt.Font("Cambria", 1, 15)); // NOI18N
+        TambahBT.setHoverColor(new java.awt.Color(51, 153, 0));
+        TambahBT.setPressedColor(new java.awt.Color(51, 102, 0));
+        TambahBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TambahBTActionPerformed(evt);
+            }
+        });
+
+        ResetBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ananta/ui/ux/icon_reset.png"))); // NOI18N
+        ResetBT.setText("Reset");
+        ResetBT.setDefaultColor(new java.awt.Color(255, 51, 51));
+        ResetBT.setFont(new java.awt.Font("Cambria", 1, 15)); // NOI18N
+        ResetBT.setHoverColor(new java.awt.Color(255, 0, 0));
+        ResetBT.setPressedColor(new java.awt.Color(153, 0, 0));
+        ResetBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResetBTActionPerformed(evt);
+            }
+        });
+
+        EditBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ananta/ui/ux/icons8-edit-30.png"))); // NOI18N
+        EditBT.setText("Edit");
+        EditBT.setFont(new java.awt.Font("Cambria", 1, 15)); // NOI18N
+        EditBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditBTActionPerformed(evt);
+            }
+        });
+
+        CetakBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ananta/ui/ux/icon_cetak.png"))); // NOI18N
+        CetakBT.setText("Cetak");
+        CetakBT.setDefaultColor(new java.awt.Color(204, 0, 204));
+        CetakBT.setFont(new java.awt.Font("Cambria", 1, 15)); // NOI18N
+        CetakBT.setHideActionText(true);
+        CetakBT.setHoverColor(new java.awt.Color(153, 0, 153));
+        CetakBT.setPressedColor(new java.awt.Color(102, 0, 102));
+        CetakBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CetakBTActionPerformed(evt);
+            }
+        });
+
+        SelesaiBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ananta/ui/ux/icon_selesai.png"))); // NOI18N
+        SelesaiBT.setText("Selesai");
+        SelesaiBT.setFont(new java.awt.Font("Cambria", 1, 15)); // NOI18N
+        SelesaiBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelesaiBTActionPerformed(evt);
+            }
+        });
+
+        HapusBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ananta/ui/ux/icon_hapus.png"))); // NOI18N
+        HapusBT.setText("Hapus");
+        HapusBT.setDefaultColor(new java.awt.Color(255, 51, 51));
+        HapusBT.setFont(new java.awt.Font("Cambria", 1, 15)); // NOI18N
+        HapusBT.setHoverColor(new java.awt.Color(255, 0, 0));
+        HapusBT.setPressedColor(new java.awt.Color(153, 0, 0));
+        HapusBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HapusBTActionPerformed(evt);
+            }
+        });
+
+        UndoBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ananta/ui/ux/icon_undo.png"))); // NOI18N
+        UndoBT.setText("Undo");
+        UndoBT.setDefaultColor(new java.awt.Color(255, 153, 0));
+        UndoBT.setFont(new java.awt.Font("Cambria", 1, 15)); // NOI18N
+        UndoBT.setHoverColor(new java.awt.Color(255, 102, 0));
+        UndoBT.setPressedColor(new java.awt.Color(204, 102, 0));
+        UndoBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UndoBTActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout shapecustom2Layout = new javax.swing.GroupLayout(shapecustom2);
         shapecustom2.setLayout(shapecustom2Layout);
         shapecustom2Layout.setHorizontalGroup(
             shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shapecustom2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(15, 15, 15)
                 .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1560, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(shapecustom2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(shapecustom2Layout.createSequentialGroup()
                                 .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(shapecustom2Layout.createSequentialGroup()
@@ -1252,102 +1260,101 @@ public class FormTransaksi extends javax.swing.JPanel {
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(138, 138, 138)
                                 .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(SelesaiBT, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(shapecustom2Layout.createSequentialGroup()
+                                        .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(shapecustom12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(shapecustom2Layout.createSequentialGroup()
+                                        .addGap(108, 108, 108)
+                                        .addComponent(shapecustom13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(shapecustom2Layout.createSequentialGroup()
                                         .addComponent(TambahBT, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(50, 50, 50)
                                         .addComponent(ResetBT, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(50, 50, 50)
                                         .addComponent(UndoBT, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(shapecustom2Layout.createSequentialGroup()
-                                        .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(shapecustom12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(shapecustom2Layout.createSequentialGroup()
-                                        .addGap(108, 108, 108)
-                                        .addComponent(shapecustom13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(SelesaiBT, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(shapecustom2Layout.createSequentialGroup()
-                                .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(shapecustom2Layout.createSequentialGroup()
-                                        .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(41, 41, 41)
-                                        .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(shapecustom8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(JasaCB, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(BarberCB, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(PaymentCB, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(shapecustom2Layout.createSequentialGroup()
-                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(42, 42, 42)
-                                        .addComponent(CetakBT, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(40, 40, 40)
-                                        .addComponent(EditBT, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(44, 44, 44)
+                                .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(41, 41, 41)
+                                .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(shapecustom8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JasaCB, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BarberCB, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(PaymentCB, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel9)
+                            .addGroup(shapecustom2Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(40, 40, 40)
+                                .addComponent(CetakBT, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(EditBT, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
                                 .addComponent(HapusBT, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(shapecustom5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1561, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addGap(108, 108, 108)
+                        .addComponent(shapecustom5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         shapecustom2Layout.setVerticalGroup(
             shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shapecustom2Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
                 .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(shapecustom12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(shapecustom6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(shapecustom13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JasaCB, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(UndoBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TambahBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ResetBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SelesaiBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BarberCB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PaymentCB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(CetakBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(EditBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(HapusBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
-            .addGroup(shapecustom2Layout.createSequentialGroup()
-                .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(shapecustom2Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shapecustom2Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
                         .addComponent(shapecustom5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(shapecustom2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(shapecustom8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(500, 500, 500))
+                        .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(shapecustom2Layout.createSequentialGroup()
+                                .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(shapecustom2Layout.createSequentialGroup()
+                                        .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(shapecustom12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(shapecustom6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(shapecustom13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(JasaCB, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(26, 26, 26)
+                                        .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(UndoBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(TambahBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(ResetBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(BarberCB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(SelesaiBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(PaymentCB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(shapecustom2Layout.createSequentialGroup()
+                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(shapecustom8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(96, 96, 96)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(shapecustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(CetakBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(EditBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(HapusBT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -1358,21 +1365,13 @@ public class FormTransaksi extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(shapecustom2, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE)
+            .addComponent(shapecustom2, javax.swing.GroupLayout.DEFAULT_SIZE, 1003, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void TotalHargaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TotalHargaTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TotalHargaTextActionPerformed
-
-    private void ResetBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetBTActionPerformed
-        int konfirmasi = JOptionPane.showConfirmDialog(this, "Apakah Anda yakin ingin mereset transaksi?",
-                "Konfirmasi Reset", JOptionPane.YES_NO_OPTION);
-        if (konfirmasi == JOptionPane.YES_OPTION) {
-            resetFormTransaksi();
-        }
-    }//GEN-LAST:event_ResetBTActionPerformed
 
     private void KasirTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KasirTextActionPerformed
         // TODO add your handling code here:
@@ -1402,8 +1401,15 @@ public class FormTransaksi extends javax.swing.JPanel {
 
     }//GEN-LAST:event_JasaCBActionPerformed
 
-    private void TambahBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TambahBTActionPerformed
+    private void PaymentCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaymentCBActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_PaymentCBActionPerformed
+
+    private void barcodeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barcodeTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_barcodeTextActionPerformed
+
+    private void TambahBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TambahBTActionPerformed
         String jasaDipilih = (String) JasaCB.getSelectedItem();
 
         if (jasaDipilih != null && !jasaDipilih.equalsIgnoreCase("Pilih Opsi")) {
@@ -1443,6 +1449,28 @@ public class FormTransaksi extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Pilih jasa terlebih dahulu!", "Peringatan", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_TambahBTActionPerformed
+
+    private void ResetBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetBTActionPerformed
+        int konfirmasi = JOptionPane.showConfirmDialog(this, "Apakah Anda yakin ingin mereset transaksi?",
+                "Konfirmasi Reset", JOptionPane.YES_NO_OPTION);
+        if (konfirmasi == JOptionPane.YES_OPTION) {
+            resetFormTransaksi();
+        }    
+    }//GEN-LAST:event_ResetBTActionPerformed
+
+    private void EditBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditBTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EditBTActionPerformed
+
+    private void CetakBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CetakBTActionPerformed
+        int selectedRow = RiwayatTB.getSelectedRow();
+        if (selectedRow != -1) {
+            int idTransaksi = (int) RiwayatTB.getValueAt(selectedRow, 1); // kolom ke-1 adalah id_transaksi
+            cetakStruk(idTransaksi);
+        } else {
+            JOptionPane.showMessageDialog(this, "Silakan pilih baris transaksi yang ingin dicetak.");
+        }
+    }//GEN-LAST:event_CetakBTActionPerformed
 
     private void SelesaiBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelesaiBTActionPerformed
         try {
@@ -1497,39 +1525,7 @@ public class FormTransaksi extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_SelesaiBTActionPerformed
 
-    private void PaymentCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaymentCBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PaymentCBActionPerformed
-
-    private void barcodeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barcodeTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_barcodeTextActionPerformed
-
-    private void UndoBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UndoBTActionPerformed
-        // TODO add your handling code here:
-        if (!undoStack.isEmpty()) {
-            undoStack.pop().run();
-        } else {
-            JOptionPane.showMessageDialog(this, "Tidak ada aksi yang bisa di-undo.");
-        }
-    }//GEN-LAST:event_UndoBTActionPerformed
-
-    private void CetakBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CetakBTActionPerformed
-        int selectedRow = RiwayatTB.getSelectedRow();
-        if (selectedRow != -1) {
-            int idTransaksi = (int) RiwayatTB.getValueAt(selectedRow, 1); // kolom ke-1 adalah id_transaksi
-            cetakStruk(idTransaksi);
-        } else {
-            JOptionPane.showMessageDialog(this, "Silakan pilih baris transaksi yang ingin dicetak.");
-        }
-    }//GEN-LAST:event_CetakBTActionPerformed
-
-    private void EditBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditBTActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EditBTActionPerformed
-
     private void HapusBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusBTActionPerformed
-        // TODO add your handling code here:
         int selectedRow = RiwayatTB.getSelectedRow();
 
         if (selectedRow == -1) {
@@ -1545,6 +1541,14 @@ public class FormTransaksi extends javax.swing.JPanel {
             hapusTransaksiDariDatabase(idTransaksi);
         }
     }//GEN-LAST:event_HapusBTActionPerformed
+
+    private void UndoBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UndoBTActionPerformed
+        if (!undoStack.isEmpty()) {
+            undoStack.pop().run();
+        } else {
+            JOptionPane.showMessageDialog(this, "Tidak ada aksi yang bisa di-undo.");
+        }
+    }//GEN-LAST:event_UndoBTActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

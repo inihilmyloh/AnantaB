@@ -219,7 +219,6 @@ public class FormAbsensi extends javax.swing.JPanel {
         String keyword = Text_Pencarian.getText().trim();
         DefaultTableModel model = (DefaultTableModel) Tabel_Data.getModel();
         model.setRowCount(0); // Kosongkan tabel sebelum isi data baru
-
         try {
             Connection con = Database.getConnection();
             if (con != null) {
@@ -229,9 +228,7 @@ public class FormAbsensi extends javax.swing.JPanel {
                 stat.setString(1, "%" + keyword + "%");
                 stat.setString(2, "%" + keyword + "%");
                 stat.setString(3, "%" + keyword + "%");
-
                 ResultSet rs = stat.executeQuery();
-
                 while (rs.next()) {
                     int idabsensi = rs.getInt("id_absensi");
                     String namakaryawan = rs.getString("nama");
@@ -243,13 +240,11 @@ public class FormAbsensi extends javax.swing.JPanel {
                     Object[] rowData = {idabsensi, namakaryawan, status, waktumasuk, waktukeluar, tanggal};
                     model.addRow(rowData);
                 }
-
                 rs.close();
                 stat.close();
             } else {
                 JOptionPane.showMessageDialog(null, "Gagal Koneksi Ke Database");
             }
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
             e.printStackTrace();
@@ -266,15 +261,12 @@ public class FormAbsensi extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Pilih baris yang ingin dihapus terlebih dahulu.");
             return;
         }
-
         int konfirmasi = JOptionPane.showConfirmDialog(null, "Yakin ingin menghapus data ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         if (konfirmasi != JOptionPane.YES_OPTION) {
             return;
         }
-
         DefaultTableModel model = (DefaultTableModel) Tabel_Data.getModel();
         int idAbsensi = (int) model.getValueAt(selectedRow, 0); // Kolom 0 = id_absensi
-
         try {
             Connection con = Database.getConnection();
             if (con != null) {
@@ -289,12 +281,10 @@ public class FormAbsensi extends javax.swing.JPanel {
                 } else {
                     JOptionPane.showMessageDialog(null, "Data gagal dihapus.");
                 }
-
                 stat.close();
             } else {
                 JOptionPane.showMessageDialog(null, "Gagal koneksi ke database.");
             }
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
             e.printStackTrace();
@@ -318,7 +308,6 @@ public class FormAbsensi extends javax.swing.JPanel {
     private void DataAbsensi() {
         DefaultTableModel model = (DefaultTableModel) Tabel_Data.getModel();
         model.setRowCount(0);
-
         try {
             Connection con = Database.getConnection();
             if (con != null) {
@@ -338,13 +327,11 @@ public class FormAbsensi extends javax.swing.JPanel {
                     Object[] rowData = {idabsensi, namakaryawan, status, waktumasuk, waktukeluar, tanggal};
                     model.addRow(rowData);
                 }
-
                 rs.close();
                 stat.close();
             } else {
                 JOptionPane.showMessageDialog(null, "Gagal Koneksi Ke Database");
             }
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
             e.printStackTrace();

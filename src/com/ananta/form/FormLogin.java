@@ -68,6 +68,12 @@ public class FormLogin extends javax.swing.JPanel {
         PanelLogin.setRoundTopLeft(20);
         PanelLogin.setRoundTopRight(20);
         PanelLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        UsernamePane.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UsernamePaneActionPerformed(evt);
+            }
+        });
         PanelLogin.add(UsernamePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 250, 40));
 
         PasswordPane.addActionListener(new java.awt.event.ActionListener() {
@@ -265,6 +271,10 @@ public class FormLogin extends javax.swing.JPanel {
     private void PasswordPaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordPaneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordPaneActionPerformed
+
+    private void UsernamePaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernamePaneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UsernamePaneActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
